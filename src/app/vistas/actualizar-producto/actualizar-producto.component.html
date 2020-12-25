@@ -1,0 +1,32 @@
+<div>
+  <form>
+    <h1 class="text-center">ACTUALIZAR PRODUCTO</h1>
+    <div class="form-row">
+      <label for="inputProducto">Nombre de producto</label>
+      <input type="text" class="form-control" id="inputProducto" placeholder="Producto">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputPrecioProd">Precio Unitario</label>
+        <input type="text" class="form-control" id="inputPrecioProd" placeholder="Precio">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputStock">Stock</label>
+        <input type="text" class="form-control" id="inputStock" placeholder="Stock">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputDescripcionProd">Descripción</label>
+      <input type="text" class="form-control" id="inputDescripcionProd" placeholder="Descripción del producto">
+    </div>
+    <div class="form-group">
+      <label for="inputProveedorProd">Proveedor</label>
+      <input type="text" class="form-control" id="inputProveedorProd" placeholder="Proveedor del producto">
+    </div>
+    <button type="submit" class="btn btn-primary">
+      <a class="dropdown-item" [routerLink]="['listar-productos']"><h6 class="text-white">Registar Producto</h6></a>
+    </button>
+  </form>
+</div>

@@ -1,0 +1,17 @@
+img{
+    border-radius: 10%;
+    height: 60px;
+    width: 100px;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+
+    box-shadow: 13px 13px 10px rgba(0,0,0,0.4);
+    overflow: hidden;
+}
+
+img:hover{
+    transform: translateY(-5px);
+    transition: all 0.25s;
+    box-shadow: 20px 20px 20px rgba(0,0,0,0.4);
+}

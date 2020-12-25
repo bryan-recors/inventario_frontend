@@ -1,0 +1,33 @@
+<div>
+  <form>
+    <h1 class="text-center">REGISTRAR VENTA</h1>
+    <div class="form-row">
+      <label for="inputFechaVenta">Fecha Venta</label>
+      <input type="date" class="form-control" id="inputFechaVenta" placeholder="">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCantidad">Cantidad</label>
+        <input type="text" class="form-control" id="inputCantidad" placeholder="Cantidad">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPrecioProd">Precio Unitario</label>
+        <input type="text" class="form-control" id="inputPrecioProd" placeholder="Precio">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputTotalVenta">Total Venta</label>
+      <input type="text" class="form-control" id="inputTotalVenta" placeholder="Total Venta">
+    </div>
+    <div class="form-group">
+        <label for="inputPagarVenta">Total a pagar</label>
+        <input type="text" class="form-control" id="inputPagarVenta" placeholder="">
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      <a class="dropdown-item" [routerLink]="['listar-productos']"><h6 class="text-white">Registar Venta</h6></a>
+    </button>
+  </form>
+</div>
