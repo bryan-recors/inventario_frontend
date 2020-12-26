@@ -12,22 +12,28 @@
         <input type="text" class="form-control" id="inputCantidad" placeholder="Cantidad">
       </div>
       <div class="form-group col-md-6">
-        <label for="inputPrecioProd">Precio Unitario</label>
-        <input type="text" class="form-control" id="inputPrecioProd" placeholder="Precio">
+        <label for="inputProducto">Producto</label>
+        <input type="text" class="form-control" id="inputProducto" placeholder="Producto">
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-4">
+         <label for="inputPrecioProd">Precio Unitario</label>
+         <input type="text" class="form-control" id="inputPrecioProd" placeholder="00,00">
+      </div>
+      <div class="form-group col-md-4">
+         <label for="inputTotalVenta">Total Venta</label>
+         <input type="text" class="form-control" id="inputTotalVenta" placeholder="00,00">
+      </div>
+      <div class="form-group col-md-4">
+         <label for="inputPagarVenta">Total a pagar</label>
+         <input type="text" class="form-control" id="inputPagarVenta" placeholder="00,00">
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="inputTotalVenta">Total Venta</label>
-      <input type="text" class="form-control" id="inputTotalVenta" placeholder="Total Venta">
+    <div class="modal-footer">
+      <button routerLink="/listar-ventas" type="button" class="btn btn-primary">Registar Venta</button>
     </div>
-    <div class="form-group">
-        <label for="inputPagarVenta">Total a pagar</label>
-        <input type="text" class="form-control" id="inputPagarVenta" placeholder="">
-    </div>
-
-    <button type="submit" class="btn btn-primary">
-      <a class="dropdown-item" [routerLink]="['listar-productos']"><h6 class="text-white">Registar Venta</h6></a>
-    </button>
   </form>
 </div>

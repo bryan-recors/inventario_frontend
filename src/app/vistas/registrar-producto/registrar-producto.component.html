@@ -9,7 +9,7 @@
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="inputPrecioProd">Precio Unitario</label>
-        <input type="text" class="form-control" id="inputPrecioProd" placeholder="Precio">
+        <input type="text" class="form-control" id="inputPrecioProd" placeholder="00,00">
       </div>
       <div class="form-group col-md-6">
         <label for="inputStock">Stock</label>
@@ -23,7 +23,7 @@
     </div>
     <div class="form-group">
       <label for="inputProveedorProd">Proveedor</label>
-      <input type="text" class="form-control" id="inputProveedorProd" placeholder="Proveedor del producto">
+      <input type="text" class="form-control" id="inputProveedorProd" placeholder="Proveedor del proveedor">
     </div>
     <!--
     <div class="form-group">
@@ -56,8 +56,9 @@
       </div>
     </div>
 -->
-    <button type="submit" class="btn btn-primary">
-      <a class="dropdown-item" [routerLink]="['listar-productos']"><h6 class="text-white">Registar Producto</h6></a>
-    </button>
+
+    <div class="modal-footer">
+      <button routerLink="/listar-productos" type="button" class="btn btn-primary">Registar Producto</button>
+    </div>
   </form>
 </div>

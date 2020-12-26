@@ -22,9 +22,7 @@ import { FooterComponent } from './plantillas/footer/footer.component';
     FooterComponent,
     //variable
     routingComponents,
-    
-    
-
+   
     //ListarProductosComponent,
     //LoginComponent,
     //RegistrarProductoComponent,
