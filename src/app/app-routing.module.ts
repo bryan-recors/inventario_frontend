@@ -11,6 +11,7 @@ import { EliminarProductoComponent } from './vistas/eliminar-producto/eliminar-p
 import { RegistrarVentasComponent } from './vistas/registrar-ventas/registrar-ventas.component';
 import { ListarVentasComponent } from './vistas/listar-ventas/listar-ventas.component';
 import { ActualizarVentaComponent } from './vistas/actualizar-venta/actualizar-venta.component';
+import { EliminarVentaComponent } from './vistas/eliminar-venta/eliminar-venta.component';
 
 import { ReportesVentasComponent } from './vistas/reportes-ventas/reportes-ventas.component';
 
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'registrar-ventas', component: RegistrarVentasComponent },
   { path: 'listar-ventas', component: ListarVentasComponent },
   { path: 'actualizar-venta', component: ActualizarVentaComponent },
+  { path: 'eliminar-venta', component: EliminarVentaComponent },
 
   { path: 'reportes-ventas', component: ReportesVentasComponent },
   
