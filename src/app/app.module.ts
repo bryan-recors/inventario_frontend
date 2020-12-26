@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './plantillas/header/header.component';
 import { FooterComponent } from './plantillas/footer/footer.component';
 
+import {HttpClientModule} from '@angular/common/http'
+
 
 //import { ListarProductosComponent } from './vistas/listar-productos/listar-productos.component';
 //import { LoginComponent } from './vistas/login/login.component';
@@ -33,7 +35,8 @@ import { FooterComponent } from './plantillas/footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
