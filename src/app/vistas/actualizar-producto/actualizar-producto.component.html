@@ -1,34 +1,34 @@
-<div>
-  <form>
+<div class="container">
+  <form [formGroup]="editarForm" (ngSubmit)="postForm(editarForm.value)"> 
     <h1 class="text-center">ACTUALIZAR PRODUCTO</h1>
     <div class="form-row">
       <label for="inputProducto">Nombre de producto</label>
-      <input type="text" class="form-control" id="inputProducto" placeholder="Producto">
+      <input type="text" class="form-control" id="inputProducto" placeholder="Producto" formControlName='nombre'>
     </div>
 
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="inputPrecioProd">Precio Unitario</label>
-        <input type="text" class="form-control" id="inputPrecioProd" placeholder="00,00">
+        <input type="text" class="form-control" id="inputPrecioProd" placeholder="00,00" formControlName='precio'>
       </div>
       <div class="form-group col-md-6">
         <label for="inputStock">Stock</label>
-        <input type="text" class="form-control" id="inputStock" placeholder="Stock">
+        <input type="text" class="form-control" id="inputStock" placeholder="Stock" formControlName='stock'>
       </div>
     </div>
 
     <div class="form-group">
       <label for="inputDescripcionProd">Descripción</label>
-      <input type="text" class="form-control" id="inputDescripcionProd" placeholder="Descripción del producto">
+      <input type="text" class="form-control" id="inputDescripcionProd" placeholder="Descripción del producto" formControlName='descripcion'>
     </div>
     <div class="form-group">
       <label for="inputProveedorProd">Proveedor</label>
-      <input type="text" class="form-control" id="inputProveedorProd" placeholder="Proveedor del producto">
+      <input type="text" class="form-control" id="inputProveedorProd" placeholder="Proveedor del producto" formControlName='proveedor.nombre'>
     </div>
 
     <div class="modal-footer">
       <button routerLink="/listar-productos" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-      <button routerLink="/listar-productos" type="button" class="btn btn-primary">Guardar Cambios</button>
+      <button type="submit" class="btn btn-primary">Guardar Cambios</button>
     </div>
   </form>
 </div>

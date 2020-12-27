@@ -79,7 +79,7 @@
                           </tr>
                       </thead>
                       <tbody>
-                          <tr *ngFor="let producto of productos">
+                          <tr *ngFor="let producto of productos" >
                               <td>
                                   <span class="custom-checkbox">
                                       <input type="checkbox" id="checkbox1" name="options[]" value="1">
@@ -93,7 +93,7 @@
                               <td>{{producto.descripcion}}</td>
                               <td>{{producto.proveedor.nombre}}</td>
                               <td>
-                                  <a class="edit" data-toggle="modal" routerLink="/actualizar-producto"><i class="material-icons" data-toggle="tooltip" title="Actualizar">&#xE254;</i></a>
+                                  <a class="edit" data-toggle="modal" routerLink="actualizar-producto/:id"><i class="material-icons" data-toggle="tooltip" title="Actualizar" (click)=editarproducto(producto.id)>&#xE254;</i></a>
                                   <a class="delete" data-toggle="modal" routerLink="/eliminar-producto"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                               </td>
                           </tr>

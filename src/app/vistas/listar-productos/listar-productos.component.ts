@@ -16,5 +16,8 @@ export class ListarProductosComponent implements OnInit {
         this.productos=data;
       })
   }
+  editarproducto(id){
+    this.router.navigate(['actualizar-producto',id])
+  }
 
 }
