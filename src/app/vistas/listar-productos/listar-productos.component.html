@@ -15,19 +15,19 @@
   $(document).ready(function(){
       // Activate tooltip
       $('[data-toggle="tooltip"]').tooltip();
-      
+
       // Select/Deselect checkboxes
       var checkbox = $('table tbody input[type="checkbox"]');
       $("#selectAll").click(function(){
           if(this.checked){
               checkbox.each(function(){
-                  this.checked = true;                        
+                  this.checked = true;
               });
           } else{
               checkbox.each(function(){
-                  this.checked = false;                        
+                  this.checked = false;
               });
-          } 
+          }
       });
       checkbox.click(function(){
           if(!this.checked){
@@ -55,7 +55,7 @@
                           <div class="col-xs-6">
                               <a class="btn btn-success" routerLink="/registrar-producto" data-toggle="modal"><i class="material-icons" >&#xE147;</i> <span>Añadir Producto</span></a>
                               <!--
-                              <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+                              <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
                               -->
                             </div>
                       </div>
@@ -91,13 +91,13 @@
                               <td>{{producto.precio}}</td>
                               <td>{{producto.stock}}</td>
                               <td>{{producto.descripcion}}</td>
-                              <td>{{producto.proveedor}}</td>
+                              <td>{{producto.proveedor.nombre}}</td>
                               <td>
                                   <a class="edit" data-toggle="modal" routerLink="/actualizar-producto"><i class="material-icons" data-toggle="tooltip" title="Actualizar">&#xE254;</i></a>
                                   <a class="delete" data-toggle="modal" routerLink="/eliminar-producto"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                               </td>
                           </tr>
-                          
+
                       </tbody>
                   </table>
                   <!--
@@ -115,18 +115,18 @@
                   </div>
                 -->
               </div>
-          </div>        
+          </div>
       </div>
       <!-- Edit Modal HTML -
       <div id="registrarProducto" class="modal fade">
           <div class="modal-dialog">
               <div class="modal-content">
                   <form>
-                      <div class="modal-header">						
+                      <div class="modal-header">
                           <h4 class="modal-title">Registrar Producto</h4>
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                       </div>
-                      <div class="modal-body">					
+                      <div class="modal-body">
                           <div class="form-group">
                               <label>Name</label>
                               <input type="text" class="form-control" required>
@@ -142,7 +142,7 @@
                           <div class="form-group">
                               <label>Phone</label>
                               <input type="text" class="form-control" required>
-                          </div>					
+                          </div>
                       </div>
                       <div class="modal-footer">
                           <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -157,11 +157,11 @@
           <div class="modal-dialog">
               <div class="modal-content">
                   <form>
-                      <div class="modal-header">						
+                      <div class="modal-header">
                           <h4 class="modal-title">Edit Employee</h4>
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                       </div>
-                      <div class="modal-body">					
+                      <div class="modal-body">
                           <div class="form-group">
                               <label>Name</label>
                               <input type="text" class="form-control" required>
@@ -177,7 +177,7 @@
                           <div class="form-group">
                               <label>Phone</label>
                               <input type="text" class="form-control" required>
-                          </div>					
+                          </div>
                       </div>
                       <div class="modal-footer">
                           <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -188,8 +188,6 @@
           </div>
       </div>
        Delete Modal HTML -->
-      
+
   </body>
 </html>
-
-
