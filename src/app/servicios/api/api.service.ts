@@ -11,6 +11,7 @@ import {ResponseI} from '../../modelos/response.interface';
 export class ApiService {
   private url:string="http://127.0.0.1:8000/productos/";
   constructor(private http:HttpClient) { }
+
   getAllproductos():Observable<ListaproductosI[]>{
     return this.http.get<ListaproductosI[]>(this.url);
   }
@@ -19,7 +20,7 @@ export class ApiService {
     return this.http.get<productoI>(direccion);
   }
   putProducto(form: productoI):Observable<ResponseI>{
-    let direccion = "http://127.0.0.1:8000/productos/3";
+    let direccion = this.url+form.id;
     return this.http.put<ResponseI>(direccion,form);
   }
 }

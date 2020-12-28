@@ -17,6 +17,7 @@ export class ListarProductosComponent implements OnInit {
       })
   }
   editarproducto(id){
+    console.log(id)
     this.router.navigate(['actualizar-producto',id])
   }
 

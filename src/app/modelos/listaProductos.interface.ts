@@ -4,5 +4,5 @@ export interface ListaproductosI{
     descripcion: string;
     precio: number;
     stock: number;
-    proveedor:  string;
+    proveedor: string;
 }
