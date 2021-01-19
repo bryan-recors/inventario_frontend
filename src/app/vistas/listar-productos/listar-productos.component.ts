@@ -21,4 +21,9 @@ export class ListarProductosComponent implements OnInit {
     this.router.navigate(['actualizar-producto',id])
   }
 
+  eliminarproducto(id){
+    console.log(id)
+    this.router.navigate(['eliminar-producto',id])
+  }
+
 }

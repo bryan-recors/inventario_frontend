@@ -9,7 +9,7 @@ import {ResponseI} from '../../modelos/response.interface';
   providedIn: 'root'
 })
 export class ApiService {
-  private url:string="http://127.0.0.1:8000/productos/";
+  private url:string='/productos/';
   constructor(private http:HttpClient) { }
 
   getAllproductos():Observable<ListaproductosI[]>{
@@ -22,5 +22,16 @@ export class ApiService {
   putProducto(form: productoI):Observable<ResponseI>{
     let direccion = this.url+form.id;
     return this.http.put<ResponseI>(direccion,form);
+  }
+  deleteProducto(from: productoI):Observable<ResponseI>{
+    let direccion = this.url+from.id;
+    let options ={
+      headers: new HttpHeaders ({
+        'Content-Type':'application/json; charset=utf-8'
+      }),
+      body: from 
+  
+    }
+    return this.http.delete<ResponseI>(direccion,options);
   }
 }
