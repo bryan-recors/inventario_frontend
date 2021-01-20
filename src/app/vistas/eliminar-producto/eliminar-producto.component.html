@@ -1,19 +1,18 @@
 <form method="">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">						
-                    <h4 class="modal-title">Eliminar Producto</h4>
-                    <button routerLink="/listar-productos" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">					
-                    <p>¿ Desea eliminar el producto ?</p>
-                    <p class="text-warning"><small>Arroz</small></p>
-                </div>
-                <div class="modal-footer">
-                    <input routerLink="/listar-productos" type="button" class="btn btn-primary" data-dismiss="modal" value="Cancelar">
-                    <input type="submit" class="btn btn-danger" value="Eliminar">
-                </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">						
+                <h4 class="modal-title">Eliminar Producto</h4>
+                <button routerLink="/listar-productos" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">					
+                <p>¿ Desea eliminar el producto ?</p>
+                <p class="text-warning"><small>Arroz</small></p>
+            </div>
+            <div class="modal-footer">
+                <input routerLink="/listar-productos" type="button" class="btn btn-primary" data-dismiss="modal" value="Cancelar">
+                <button type="button" class="btn btn-danger" (click)="eliminar()" >Eliminar</button>
             </div>
         </div>
+    </div>
 </form>
-
