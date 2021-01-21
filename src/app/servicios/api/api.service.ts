@@ -29,8 +29,8 @@ export class ApiService {
       headers: new HttpHeaders ({
         'Content-Type':'application/json; charset=utf-8'
       }),
-      body: from 
-  
+      body: from
+      
     }
     return this.http.delete<ResponseI>(direccion,options);
   }
