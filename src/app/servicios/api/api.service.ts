@@ -4,10 +4,13 @@ import {ListaproductosI} from '../../modelos/listaProductos.interface';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {productoI} from '../../modelos/producto.interface';
 import {ResponseI} from '../../modelos/response.interface';
+//nuevos
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiService {
   private url:string='/productos/';
   constructor(private http:HttpClient) { }
@@ -23,15 +26,14 @@ export class ApiService {
     let direccion = this.url+form.id;
     return this.http.put<ResponseI>(direccion,form);
   }
-  deleteProducto(from: productoI):Observable<ResponseI>{
-    let direccion = this.url+from.id;
-    let options ={
-      headers: new HttpHeaders ({
-        'Content-Type':'application/json; charset=utf-8'
-      }),
-      body: from
-      
-    }
-    return this.http.delete<ResponseI>(direccion,options);
+
+  deleteProducto(id): Observable<any> {
+  return this.http.delete('http://127.0.0.1:8000/productos/' + id, this.getHeaders());
+  }
+
+  private getHeaders() {
+  const httpHeaders = new HttpHeaders(
+    {'Content-Type': 'application/json; charset=utf-8'});
+  return { headers: httpHeaders };
   }
 }

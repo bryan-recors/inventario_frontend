@@ -41,7 +41,7 @@ export class ActualizarProductoComponent implements OnInit {
         'descripcion':this.datosProducto.descripcion,
         'precio':this.datosProducto.precio,
         'stock':this.datosProducto.stock,
-        'proveedor':this.datosProducto.proveedor.id,
+        'proveedor':this.datosProducto.proveedor,
       });
       console.log("editar form");
       console.log(this.editarForm.value);

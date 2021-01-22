@@ -27,7 +27,6 @@ export class EliminarProductoComponent implements OnInit {
     let productoid=this.activerouter.snapshot.paramMap.get('id');
     console.log("este es id de producto");
     console.log(productoid);
-
     this.api.getSingleProductos(productoid).subscribe(data =>{
       console.log(data);
       this.datosProducto=data;
@@ -35,12 +34,12 @@ export class EliminarProductoComponent implements OnInit {
   }
   eliminar(){
     let datos:productoI = this.eliminarForm.value;
-    this.api.deleteProducto(datos).subscribe(data =>{
+    let productoid=this.activerouter.snapshot.paramMap.get('id');
+    console.log("este es id de producto a eliminar");
+    console.log(productoid);
+    this.api.deleteProducto(productoid).subscribe(data =>{
       console.log(data);
     });
     this.router.navigate(['listar-productos']);
   }
 }
-
-
-
