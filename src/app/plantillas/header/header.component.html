@@ -46,6 +46,19 @@
             <a class="dropdown-item" [routerLink]="['listar-ventas']">Lista de Ventas</a>
           </div>
         </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-muted" href="#" id="navbarDropdown" role="button" 
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Proveedores
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['registrar-proveedor']">Registrar Proveedor</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['listar-proveedores']">Lista de Proveedores</a>
+          </div>
+        </li>
+        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-muted" href="#" id="navbarDropdown" role="button" 
              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -57,9 +70,7 @@
             <a class="dropdown-item" >Reportes de compras</a>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled text-muted" href="#">Proveedores</a>
-        </li>
+        
       </ul>
       <!--
       <form class="form-inline my-2 my-lg-0">

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-/*importar componentes */
+/*importar componentes de module.ts*/
 import { LoginComponent } from './vistas/login/login.component';
 import { RegistrarProductoComponent } from './vistas/registrar-producto/registrar-producto.component';
 import { ListarProductosComponent } from './vistas/listar-productos/listar-productos.component';
@@ -13,10 +13,15 @@ import { ListarVentasComponent } from './vistas/listar-ventas/listar-ventas.comp
 import { ActualizarVentaComponent } from './vistas/actualizar-venta/actualizar-venta.component';
 import { EliminarVentaComponent } from './vistas/eliminar-venta/eliminar-venta.component';
 
+import { RegistrarProveedorComponent } from './vistas/registrar-proveedor/registrar-proveedor.component';
+import { ListarProveedoresComponent } from './vistas/listar-proveedores/listar-proveedores.component'
+import { ActualizarProveedorComponent } from './vistas/actualizar-proveedor/actualizar-proveedor.component';
+import { EliminarProveedorComponent } from './vistas/eliminar-proveedor/eliminar-proveedor.component';
+
 import { ReportesVentasComponent } from './vistas/reportes-ventas/reportes-ventas.component';
 
 
-/*crear rutas*/
+/*crear rutas*/ 
 const routes: Routes = [
   { path:'inicio/', redirectTo: 'src/index.html' , pathMatch:'full'}, //directamente
   { path: 'login', component:LoginComponent },
@@ -29,6 +34,11 @@ const routes: Routes = [
   { path: 'listar-ventas', component: ListarVentasComponent },
   { path: 'actualizar-venta', component: ActualizarVentaComponent },
   { path: 'eliminar-venta', component: EliminarVentaComponent },
+
+  { path: 'registrar-proveedor', component: RegistrarProveedorComponent },
+  { path: 'listar-proveedores', component: ListarProveedoresComponent },
+  { path: 'actualizar-proveedor', component: ActualizarProveedorComponent },
+  { path: 'eliminar-proveedor', component: EliminarProveedorComponent },
 
   { path: 'reportes-ventas', component: ReportesVentasComponent },
   
@@ -52,18 +62,14 @@ export const routingComponents = [
   ListarVentasComponent,
   ActualizarVentaComponent,
 
+  RegistrarProveedorComponent,
+  ListarProveedoresComponent,
+  ActualizarProveedorComponent,
+  EliminarProveedorComponent,
+  
+
   ReportesVentasComponent,
 ]
-
-
-
-
-
-
-
-
-
-
 
 
 

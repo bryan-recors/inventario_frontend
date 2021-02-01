@@ -6,17 +6,10 @@ import { AppRoutingModule, routingComponents} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './plantillas/header/header.component';
 import { FooterComponent } from './plantillas/footer/footer.component';
+import {HttpClientModule} from '@angular/common/http';
 
-import {HttpClientModule} from '@angular/common/http'
-
-
+//copiar componentes a app-routing.module.ts
 //import { ListarProductosComponent } from './vistas/listar-productos/listar-productos.component';
-//import { LoginComponent } from './vistas/login/login.component';
-//import { RegistrarProductoComponent } from './vistas/registrar-producto/registrar-producto.component';
-//import { ActualizarProductoComponent } from './vistas/actualizar-producto/actualizar-producto.component';
-//import { RegistrarVentasComponent } from './vistas/registrar-ventas/registrar-ventas.component';
-//import { ActualizarVentaComponent } from './vistas/actualizar-venta/actualizar-venta.component';
-//import { ReportesVentasComponent } from './vistas/reportes-ventas/reportes-ventas.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +20,7 @@ import {HttpClientModule} from '@angular/common/http'
     routingComponents,
    
     //ListarProductosComponent,
-    //LoginComponent,
-    //RegistrarProductoComponent,
-    //ActualizarProductoComponent
-    //RegistrarVentasComponent,
-    //ActualizarVentaComponent,
-    //ReportesVentasComponent,
+    //copiar a la variable en app-routing.module.ts
   ],
   imports: [
     BrowserModule,
