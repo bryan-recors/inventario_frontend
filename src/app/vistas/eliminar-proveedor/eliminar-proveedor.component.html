@@ -3,14 +3,16 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Eliminar Proveedor</h4>
-                <button routerLink="/listar-proveedores" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button routerLink="/listar-proveedores" type="button" 
+                    class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
                 <p>¿ Desea eliminar el proveedor ?</p>
             </div>
             <div class="modal-footer">
-                <input routerLink="/listar-proveedores" type="button" class="btn btn-primary" data-dismiss="modal" value="Cancelar">
-                <button type="button" class="btn btn-danger"  >Eliminar</button>
+                <input routerLink="/listar-proveedores" type="button" 
+                    class="btn btn-primary" data-dismiss="modal" value="Cancelar">
+                <button routerLink="/listar-proveedores"  type="button" class="btn btn-danger" (click)="eliminar_Proveedor()" >Eliminar</button>
             </div>
         </div>
     </div>

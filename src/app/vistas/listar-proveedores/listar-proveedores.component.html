@@ -53,7 +53,8 @@
                               <h2>Lista de <b>Proveedores</b></h2>
                           </div>
                           <div class="col-xs-6">
-                              <a class="btn btn-success" routerLink="/registrar-proveedor" data-toggle="modal"><i class="material-icons" >&#xE147;</i> <span>Añadir Proveedor</span></a>
+                              <a class="btn btn-success" routerLink="/registrar-proveedor" data-toggle="modal">
+                                <i class="material-icons" >&#xE147;</i> <span>Añadir Proveedor</span></a>
                           </div>
                       </div>
                   </div>
@@ -77,26 +78,25 @@
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
-                              <td>
-                                  <span class="custom-checkbox">
-                                      <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                      <label for="checkbox1"></label>
-                                  </span>
-                              </td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td>
-                                  <a class="edit" data-toggle="modal" routerLink="/actualizar-proveedor"><i class="material-icons" data-toggle="tooltip" title="Actualizar" >&#xE254;</i></a>
-                                  <a class="delete" data-toggle="modal" routerLink="/eliminar-proveedor"><i class="material-icons" data-toggle="tooltip" title="Eliminar" >&#xE872;</i></a>
-
-                              </td>
-                          </tr>
+                        <tr *ngFor="let proveedor of proveedores" >
+                            <td>
+                                <span class="custom-checkbox">
+                                    <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                                    <label for="checkbox1"></label>
+                                </span>
+                            </td>
+                            <td>{{proveedor.id}}</td>
+                            <td>{{proveedor.nombre}}</td>
+                            <td>{{proveedor.descripcion}}</td>
+                            <td>{{proveedor.telefono}}</td>
+                            <td>{{proveedor.celular}}</td>
+                            <td>{{proveedor.email}}</td>
+                            <td>{{proveedor.dias_visita}}</td>
+                            <td>
+                                <a class="edit" data-toggle="modal" routerLink="actualizar-proveedor/:id"><i class="material-icons" data-toggle="tooltip" title="Actualizar" (click)=editarproveedor(proveedor.id)>&#xE254;</i></a>
+                                <a class="delete" data-toggle="modal" routerLink="eliminar-proveedor/:id"><i class="material-icons" data-toggle="tooltip" title="Eliminar" (click)=eliminarproveedor(proveedor.id)>&#xE872;</i></a>
+                            </td>
+                        </tr>
                       </tbody>
                   </table>
               </div>
@@ -104,4 +104,3 @@
       </div>
   </body>
 </html>
-

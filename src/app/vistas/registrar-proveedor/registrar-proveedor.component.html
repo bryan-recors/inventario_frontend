@@ -1,5 +1,5 @@
 <div>
-    <form>
+    <form novalidate [formGroup]= "registrarForm">
       <h1 class="text-center">REGISTRAR PROVEEDOR</h1>
 
       <div class="form-row">
@@ -35,7 +35,7 @@
       </div>
       
       <div class="modal-footer">
-        <button routerLink="/listar-proveedores" type="button" class="btn btn-primary">Registar Proveedor</button>
+        <button routerLink="/listar-proveedores" type="button" class="btn btn-primary"  (click)=guardarProveedor()>Registar Proveedor</button>
       </div>
     </form>
   </div>

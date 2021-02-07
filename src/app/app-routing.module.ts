@@ -37,8 +37,8 @@ const routes: Routes = [
 
   { path: 'registrar-proveedor', component: RegistrarProveedorComponent },
   { path: 'listar-proveedores', component: ListarProveedoresComponent },
-  { path: 'actualizar-proveedor', component: ActualizarProveedorComponent },
-  { path: 'eliminar-proveedor', component: EliminarProveedorComponent },
+  { path: 'actualizar-proveedor/:id', component: ActualizarProveedorComponent },
+  { path: 'eliminar-proveedor/:id', component: EliminarProveedorComponent },
 
   { path: 'reportes-ventas', component: ReportesVentasComponent },
   
