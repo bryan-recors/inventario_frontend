@@ -1,0 +1,36 @@
+<div class="container">
+    <form [formGroup]="editarForm" (ngSubmit)="postForm(editarForm.value)">
+      <h1 class="text-center">ACTUALIZAR USUARIO</h1>
+  
+      <div class="form-row">
+        <label for="inputProducto">Nombre del Usuario</label>
+        <input type="text" class="form-control" id="inputProducto" placeholder="Usuario" formControlName='username'>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputPrecioProd">Nombre:</label>
+          <input type="text" class="form-control" id="inputPrecioProd" placeholder="Nombre" formControlName='first_name'>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputStock">Apellido: </label>
+          <input type="text" class="form-control" id="inputStock" placeholder="Apellido" formControlName='last_name'>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="inputDescripcionProd">Correo Electronico:</label>
+        <input type="text" class="form-control" id="inputDescripcionProd" placeholder="Correo Electronico" formControlName='email'>
+      </div>
+  
+      <div class="form-group">
+        <label for="inputProveedorProd">Celular</label>
+        <input type="text" class="form-control" id="inputProveedorProd" placeholder="09XXXXXXXX" formControlName='celular'>
+      </div>
+  
+      <div class="modal-footer">
+        <button routerLink="/listar-usuario" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      </div>
+    </form>
+  </div>
