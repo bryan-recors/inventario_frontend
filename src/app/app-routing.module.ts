@@ -18,6 +18,11 @@ import { ListarProveedoresComponent } from './vistas/listar-proveedores/listar-p
 import { ActualizarProveedorComponent } from './vistas/actualizar-proveedor/actualizar-proveedor.component';
 import { EliminarProveedorComponent } from './vistas/eliminar-proveedor/eliminar-proveedor.component';
 
+import { RegistrarUsuarioComponent } from './vistas/registrar-usuario/registrar-usuario.component';
+import { ListarUsuarioComponent } from './vistas/listar-usuario/listar-usuario.component';
+import { ActualizarUsuarioComponent } from './vistas/actualizar-usuario/actualizar-usuario.component';
+import { EliminarUsuarioComponent } from './vistas/eliminar-usuario/eliminar-usuario.component'
+
 import { ReportesVentasComponent } from './vistas/reportes-ventas/reportes-ventas.component';
 
 
@@ -39,6 +44,11 @@ const routes: Routes = [
   { path: 'listar-proveedores', component: ListarProveedoresComponent },
   { path: 'actualizar-proveedor/:id', component: ActualizarProveedorComponent },
   { path: 'eliminar-proveedor/:id', component: EliminarProveedorComponent },
+
+  { path: 'registrar-usuario', component: RegistrarUsuarioComponent },
+  { path: 'listar-usuario', component: ListarUsuarioComponent },
+  { path: 'actualizar-usuario/:id', component: ActualizarUsuarioComponent },
+  { path: 'eliminar-usuario/:id', component: EliminarUsuarioComponent },
 
   { path: 'reportes-ventas', component: ReportesVentasComponent },
   
@@ -66,6 +76,11 @@ export const routingComponents = [
   ListarProveedoresComponent,
   ActualizarProveedorComponent,
   EliminarProveedorComponent,
+
+  RegistrarUsuarioComponent,
+  ListarUsuarioComponent,
+  ActualizarUsuarioComponent,
+  EliminarUsuarioComponent,
   
 
   ReportesVentasComponent,

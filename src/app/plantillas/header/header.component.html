@@ -70,7 +70,17 @@
             <a class="dropdown-item" >Reportes de compras</a>
           </div>
         </li>
-        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-muted" href="#" id="navbarDropdown" role="button" 
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Usuarios
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['registrar-usuario']">Registrar Usuarios</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['listar-usuario']">Lista de Usuarios</a>
+          </div>
+        </li>
       </ul>
       <!--
       <form class="form-inline my-2 my-lg-0">
