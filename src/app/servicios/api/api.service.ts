@@ -8,8 +8,8 @@ import {ListaproveedoresI} from '../../modelos/listaProveedores.interface';
 import {proveedorI} from '../../modelos/proveedor.interface';
 
 import {ResponseI} from '../../modelos/response.interface';
-
-
+import {usuarioI} from '../../modelos/Usuario.interface';
+import{registrarUsI} from '../../modelos/registrarU.interface'
 //nuevos
 import { map } from 'rxjs/operators';
 
@@ -59,11 +59,38 @@ export class ApiService {
   deleteProveedor(id): Observable<any> {
     return this.http.delete(this.urlpv + id, this.getHeaders());
   }
-
   addProveedor(prov: proveedorI){
     let direccion = this.urlpv
     let pJson = JSON.stringify(prov);
     return this.http.post(this.urlpv, pJson,this.getHeaders())
+          //.map(r => r.json())
+          //.catch(this.handleError);
+  }
+
+  
+  /*iniciar sesion*/
+  url_login:string="/usuarios/";
+  /*Usuario*/
+  getAllUsuarios():Observable<usuarioI[]>{
+    return this.http.get<usuarioI[]>(this.url_login);
+  }
+  getSingleUsuarios(id):Observable<usuarioI>{
+    let direccion = this.url_login+id;
+    return this.http.get<usuarioI>(direccion);
+  }
+  putUsuario(form: usuarioI):Observable<ResponseI>{
+    let direccion = this.url_login+form.id;
+    return this.http.put<ResponseI>(direccion,form);
+  }
+
+  deleteUsuario(id): Observable<any> {
+  return this.http.delete(this.url_login + id, this.getHeaders());
+  }
+
+
+  addUsuario(usu: registrarUsI){
+    let pJson = JSON.stringify(usu);
+    return this.http.post(this.url_login, pJson,this.getHeaders())
           //.map(r => r.json())
           //.catch(this.handleError);
   }
@@ -82,5 +109,6 @@ export class ApiService {
     return Observable.throw(errMsg);
   }
   */
+
 }
 
