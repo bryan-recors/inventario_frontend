@@ -1,11 +1,10 @@
 img{
     border-radius: 10%;
-    height: 60px;
-    width: 100px;
+    height: 100px;
+    width: 150px;
     padding: 0px;
-    margin: 0px;
+    margin-left: 20px;
     display: flex;
-
     box-shadow: 13px 13px 10px rgba(0,0,0,0.4);
     overflow: hidden;
 }
