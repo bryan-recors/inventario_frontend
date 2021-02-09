@@ -10,7 +10,6 @@ export class RegistrarVentasComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.name='carne';
   }
 
 }
