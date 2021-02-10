@@ -18,14 +18,17 @@ import { map } from 'rxjs/operators';
 })
 
 export class ApiService {
+
   private getHeaders() {
     const httpHeaders = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
     return { headers: httpHeaders };
   }
+
   private url:string='/productos/';
 
   constructor(private http:HttpClient) { }
 
+  //*******************productos***************************
   getAllproductos():Observable<ListaproductosI[]>{
     return this.http.get<ListaproductosI[]>(this.url);
   }
@@ -41,8 +44,8 @@ export class ApiService {
   deleteProducto(id): Observable<any> {
   return this.http.delete(this.url + id, this.getHeaders());
   }
-
-  //proveedores 
+  //*******************proveedores***************************
+  //proveedores
   private urlpv:string='/proveedores/';
 
   getAllProveedores():Observable<ListaproveedoresI[]>{
@@ -65,6 +68,12 @@ export class ApiService {
     return this.http.post(this.urlpv, pJson,this.getHeaders())
           //.map(r => r.json())
           //.catch(this.handleError);
+  }
+  //*******************ventas***************************
+  getAllVentas(){
+    this.http.get('http://127.0.0.1:8000/ventas/').subscribe(data =>{
+      console.log(data);
+    })
   }
 
   
@@ -111,4 +120,3 @@ export class ApiService {
   */
 
 }
-
