@@ -11,7 +11,7 @@ import {ApiService} from '../../servicios/api/api.service'
 
 export class RegistrarVentasComponent implements OnInit {
 
-  constructor(private api:ApiService) { }
+  constructor(public api:ApiService) { }
 
   ngOnInit(): void {
     this.api.getAllVentas()

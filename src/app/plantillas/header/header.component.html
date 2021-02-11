@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" [routerLink]="['/']">
     <img src="assets/logo.jpeg" alt="logo" loading="lazy" >
   </a>
 
@@ -12,7 +12,7 @@
     <ul class="navbar-nav ml-auto">
 
         <li class="nav-item ">
-          <a class="nav-link " href="#">
+          <a class="nav-link " [routerLink]="['/']">
             <span class="fas fa-home"></span>
             Inicio</a>
         </li>
@@ -76,7 +76,7 @@
             Reportes
           </a>
           <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item">Reportes de Ventas</a>
+            <a class="dropdown-item"   [routerLink]="['reportes-ventas']">Reportes de Ventas</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" >Reportes de compras</a>
           </div>

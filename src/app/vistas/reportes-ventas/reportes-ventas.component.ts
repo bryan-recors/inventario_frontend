@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+// importo mi servicios sandoval
+import {ApiService} from '../../servicios/api/api.service';
+//fin
 
 @Component({
   selector: 'app-reportes-ventas',
@@ -7,9 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportesVentasComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(public api:ApiService) { }
   ngOnInit(): void {
+    this.api.getAllVentas()
   }
 
 }

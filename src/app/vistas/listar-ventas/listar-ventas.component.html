@@ -26,31 +26,22 @@
                                 <label for="Seleccionar todo"></label>
                             </span>
                         </th>
-                        <th>Código</th>
-                        <th>Fecha</th>
-                        <th>Cantidad</th>
-                        <th>Producto</th>
-                        <th>Precio Unitario</th>
-                        <th>Total Venta</th>
+                        <th>ID</th>
                         <th> Total Pagar</th>
                         <th> Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let ventas of api.reposObserver |async">
+                      <!-- ver la cantidad de repos q descarga reposObserver -->
                         <td>
                             <span class="custom-checkbox">
                                 <input type="checkbox" id="checkbox1" name="options[]" value="1">
                                 <label for="checkbox1"></label>
                             </span>
                         </td>
-                        <td>000001</td>
-                        <td>Thomas Hardy</td>
-                        <td>thomashardy@mail.com</td>
-                        <td>89 Chiaroscuro Rd, Portland, USA</td>
-                        <td>(171) 555-2222</td>
-                        <td>(171) 555-2222</td>
-                        <td>(171) 555-2222</td>
+                        <td>{{ventas.id}}</td>
+                        <td>{{ventas.total}}</td>
                         <td>
                             <a class="edit" data-toggle="modal" routerLink="/actualizar-venta/"><i class="material-icons" data-toggle="tooltip" title="Actualizar" >&#xE254;</i></a>
                             <a class="delete" data-toggle="modal" routerLink="/eliminar-venta/"><i class="material-icons" data-toggle="tooltip" title="Eliminar" >&#xE872;</i></a>
@@ -58,6 +49,7 @@
                     </tr>
                 </tbody>
             </table>
+            <p> TOtal de ventas: {{(api.reposObserver | async)?.length}}</p>
         </div>
     </div>
 </div>

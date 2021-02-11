@@ -25,10 +25,17 @@ import { EliminarUsuarioComponent } from './vistas/eliminar-usuario/eliminar-usu
 
 import { ReportesVentasComponent } from './vistas/reportes-ventas/reportes-ventas.component';
 
-
-/*crear rutas*/ 
+//sandoval mostrar componente en el Inicio
+import { InicioComponent } from './vistas/inicio/inicio.component';
+import { PagNoEncontradaComponent } from './vistas/pag-no-encontrada/pag-no-encontrada.component';
+//fin
+/*crear rutas*/
 const routes: Routes = [
-  { path:'inicio/', redirectTo: 'src/index.html' , pathMatch:'full'}, //directamente
+  //********sandoval mostrar componente en el Inicio
+  //si esta en la ruta de inicio
+  { path: '', component: InicioComponent, pathMatch:'full' },
+  //{ path: 'inicio/', redirectTo: 'src/index.html' , pathMatch:'full'}, //directamente
+  //fin
   { path: 'login', component:LoginComponent },
   { path: 'registrar-producto', component: RegistrarProductoComponent },
   { path: 'listar-productos', component: ListarProductosComponent },
@@ -51,7 +58,10 @@ const routes: Routes = [
   { path: 'eliminar-usuario/:id', component: EliminarUsuarioComponent },
 
   { path: 'reportes-ventas', component: ReportesVentasComponent },
-  
+  //si ingresa cualquier ruta no especificada sandoval *****
+  { path: 'pagina-no-encontrada', component: PagNoEncontradaComponent, pathMatch:'full' },
+  { path: '**', redirectTo: 'pagina-no-encontrada' , pathMatch:'full'},
+  //fin
 ];
 
 @NgModule({
@@ -81,18 +91,7 @@ export const routingComponents = [
   ListarUsuarioComponent,
   ActualizarUsuarioComponent,
   EliminarUsuarioComponent,
-  
+
 
   ReportesVentasComponent,
 ]
-
-
-
-
-
-
-
-
-
-
-

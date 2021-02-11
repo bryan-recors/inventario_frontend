@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+//****probar observables sandoval
 import { Observable } from 'rxjs';
+//fin
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {ListaproductosI} from '../../modelos/listaProductos.interface';
@@ -12,12 +14,27 @@ import {usuarioI} from '../../modelos/Usuario.interface';
 import{registrarUsI} from '../../modelos/registrarU.interface'
 //nuevos
 import { map } from 'rxjs/operators';
+import { share } from 'rxjs/operators';
+//****probar observables sandoval
+//import 'rxjs/add/operator/map'; este es remplazaso por import { map } from 'rxjs/operators';
+//que datos quiero tomar de la consulta en este caso solo id y total
+class Repo{
+    constructor(public id :Number, public fecha :String, public total :Number){}
+}
+// llamo desde getAllVentas
+//fin
+
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ApiService {
+
+  //probando sandoval
+  //observable para listar en html
+  public reposObserver:Observable<Repo[]>;
+  //fin
 
   private getHeaders() {
     const httpHeaders = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
@@ -26,7 +43,7 @@ export class ApiService {
 
   private url:string='/productos/';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {}
 
   //*******************productos***************************
   getAllproductos():Observable<ListaproductosI[]>{
@@ -69,14 +86,17 @@ export class ApiService {
           //.map(r => r.json())
           //.catch(this.handleError);
   }
-  //*******************ventas***************************
+  //*******************ventas sandoval***************************
   getAllVentas(){
-    this.http.get('http://127.0.0.1:8000/ventas/').subscribe(data =>{
-      console.log(data);
-    })
+    this.reposObserver = this.http.get('http://127.0.0.1:8000/ventas/')
+    .pipe(map((data : Object[]) =>{
+      return data.map((r:any) => new Repo(r.id,r.fecha,r.total))
+    }));
   }
 
-  
+ //fin
+
+  //*******************usuarios***************************
   /*iniciar sesion*/
   url_login:string="/usuarios/";
   /*Usuario*/

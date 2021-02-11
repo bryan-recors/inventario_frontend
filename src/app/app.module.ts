@@ -11,7 +11,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {ApiService} from './servicios/api/api.service'
 //fin
 //registrar el componente registrar-ventas sandoval
-import {RegistrarVentasComponent} from './vistas/registrar-ventas/registrar-ventas.component'
+import {RegistrarVentasComponent} from './vistas/registrar-ventas/registrar-ventas.component';
+import { InicioComponent } from './vistas/inicio/inicio.component';
+import { PagNoEncontradaComponent } from './vistas/pag-no-encontrada/pag-no-encontrada.component'
 //fin
 
 //copiar componentes a app-routing.module.ts
@@ -27,6 +29,8 @@ import {RegistrarVentasComponent} from './vistas/registrar-ventas/registrar-vent
     //fin
     //variable
     routingComponents,
+    InicioComponent,
+    PagNoEncontradaComponent,
 
     //ListarProductosComponent,
     //copiar a la variable en app-routing.module.ts
