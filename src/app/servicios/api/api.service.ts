@@ -42,7 +42,6 @@ export class ApiService {
   }
 
   private url:string='/productos/';
-
   constructor(private http:HttpClient) {}
 
   //*******************productos***************************
@@ -57,7 +56,6 @@ export class ApiService {
     let direccion = this.url+form.id;
     return this.http.put<ResponseI>(direccion,form);
   }
-
   deleteProducto(id): Observable<any> {
   return this.http.delete(this.url + id, this.getHeaders());
   }
@@ -93,7 +91,11 @@ export class ApiService {
       return data.map((r:any) => new Repo(r.id,r.fecha,r.total))
     }));
   }
-
+ //Crear venta ******
+ private urlsearchp:string='/productos/search?q=manza';
+  searchProducto(query:string):Observable<ListaproductosI> {
+    return this.http.get<ListaproductosI>(this.urlsearchp);
+  }
  //fin
 
   //*******************usuarios***************************
