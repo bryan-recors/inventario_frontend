@@ -9,6 +9,7 @@ import {ListaproductosI} from '../../modelos/listaProductos.interface';
 })
 export class ListarProductosComponent implements OnInit {
   productos:ListaproductosI[];
+  filterProducto = '';
   constructor(private api:ApiService, private router:Router) { }
 
   ngOnInit(): void {

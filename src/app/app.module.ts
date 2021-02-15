@@ -13,7 +13,8 @@ import {ApiService} from './servicios/api/api.service'
 //registrar el componente registrar-ventas sandoval
 import {RegistrarVentasComponent} from './vistas/registrar-ventas/registrar-ventas.component';
 import { InicioComponent } from './vistas/inicio/inicio.component';
-import { PagNoEncontradaComponent } from './vistas/pag-no-encontrada/pag-no-encontrada.component'
+import { PagNoEncontradaComponent } from './vistas/pag-no-encontrada/pag-no-encontrada.component';
+import { FilterProductosPipe } from './pipes/filter-productos.pipe'
 //fin
 
 //copiar componentes a app-routing.module.ts
@@ -31,6 +32,7 @@ import { PagNoEncontradaComponent } from './vistas/pag-no-encontrada/pag-no-enco
     routingComponents,
     InicioComponent,
     PagNoEncontradaComponent,
+    FilterProductosPipe,
 
     //ListarProductosComponent,
     //copiar a la variable en app-routing.module.ts
