@@ -14,8 +14,12 @@ import {ApiService} from './servicios/api/api.service'
 import {RegistrarVentasComponent} from './vistas/registrar-ventas/registrar-ventas.component';
 import { InicioComponent } from './vistas/inicio/inicio.component';
 import { PagNoEncontradaComponent } from './vistas/pag-no-encontrada/pag-no-encontrada.component';
-import { FilterProductosPipe } from './pipes/filter-productos.pipe'
 //fin
+
+//busquedas
+import { FilterProductosPipe } from './pipes/filter-productos.pipe';
+import { FilterProveedoresPipe } from './pipes/filter-proveedores.pipe';
+import { FilterUsuariosPipe } from './pipes/filter-usuarios.pipe'
 
 //copiar componentes a app-routing.module.ts
 //import { ListarProductosComponent } from './vistas/listar-productos/listar-productos.component';
@@ -33,6 +37,8 @@ import { FilterProductosPipe } from './pipes/filter-productos.pipe'
     InicioComponent,
     PagNoEncontradaComponent,
     FilterProductosPipe,
+    FilterProveedoresPipe,
+    FilterUsuariosPipe,
 
     //ListarProductosComponent,
     //copiar a la variable en app-routing.module.ts
