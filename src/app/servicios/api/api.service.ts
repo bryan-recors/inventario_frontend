@@ -15,6 +15,7 @@ import{registrarUsI} from '../../modelos/registrarU.interface'
 //nuevos
 import { map } from 'rxjs/operators';
 import { share } from 'rxjs/operators';
+import {ventaI} from '../../modelos/regventa.interface';
 //****probar observables sandoval
 //import 'rxjs/add/operator/map'; este es remplazaso por import { map } from 'rxjs/operators';
 //que datos quiero tomar de la consulta en este caso solo id y total
@@ -95,6 +96,18 @@ export class ApiService {
  private urlsearchp:string='/productos/search?q=manza';
   searchProducto(query:string):Observable<ListaproductosI> {
     return this.http.get<ListaproductosI>(this.urlsearchp);
+  }
+
+  private urlsale:string="/ventas/";
+
+  iniciarVenta(): Observable<ventaI>{
+    let direccion = 'http://127.0.0.1:8000/ventas/'
+    return this.http.post<ventaI>(direccion,this.getHeaders());
+  }
+
+  getSingleVenta(id):Observable<ventaI>{
+    let direccion = 'http://127.0.0.1:8000/ventas/'+id;
+    return this.http.get<ventaI>(direccion);
   }
  //fin
 
