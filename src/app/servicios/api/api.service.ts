@@ -15,6 +15,9 @@ import{registrarUsI} from '../../modelos/registrarU.interface'
 //nuevos
 import { map } from 'rxjs/operators';
 import { share } from 'rxjs/operators';
+import {ventaI} from '../../modelos/regventa.interface';
+import {detalleVentaI} from '../../modelos/detalleventa.interface';
+
 //****probar observables sandoval
 //import 'rxjs/add/operator/map'; este es remplazaso por import { map } from 'rxjs/operators';
 //que datos quiero tomar de la consulta en este caso solo id y total
@@ -42,7 +45,6 @@ export class ApiService {
   }
 
   private url:string='/productos/';
-
   constructor(private http:HttpClient) {}
 
   //*******************productos***************************
@@ -57,7 +59,6 @@ export class ApiService {
     let direccion = this.url+form.id;
     return this.http.put<ResponseI>(direccion,form);
   }
-
   deleteProducto(id): Observable<any> {
   return this.http.delete(this.url + id, this.getHeaders());
   }
@@ -93,6 +94,44 @@ export class ApiService {
       return data.map((r:any) => new Repo(r.id,r.fecha,r.total))
     }));
   }
+ //Crear venta ******
+ private urlsearchp:string='/productos/search?q=manza';
+  searchProducto(query:string):Observable<ListaproductosI> {
+    return this.http.get<ListaproductosI>(this.urlsearchp);
+  }
+
+  private urlsale:string="/ventas/";
+
+  iniciarVenta(): Observable<ventaI>{
+    let direccion = 'http://127.0.0.1:8000/ventas/'
+    return this.http.post<ventaI>(direccion,this.getHeaders());
+  }
+
+  getSingleVenta(id):Observable<ventaI>{
+    let direccion = 'http://127.0.0.1:8000/ventas/'+id;
+    return this.http.get<ventaI>(direccion);
+  }
+
+  //crear la venta
+  addVenta(detalleventa: proveedorI){
+    let direccion = 'http://127.0.0.1:8000/detalle_ventas/'
+    let pJson = JSON.stringify(detalleventa);
+    return this.http.post(direccion, pJson,this.getHeaders())
+          //.map(r => r.json())
+          //.catch(this.handleError);
+  }
+
+  //taer todos los detalle de venta que tengan id de la venta en curso
+  getDetalleVentaParticular(id):Observable<detalleVentaI[]>{
+    let direccion = 'http://127.0.0.1:8000/detalle_ventas_porventa/'+id;
+    return this.http.get<detalleVentaI[]>(direccion);
+  }
+
+  putVenta(form: ventaI):Observable<ResponseI>{
+    let direccion = 'http://127.0.0.1:8000/ventas/'+form.id;
+    return this.http.put<ResponseI>(direccion,form);
+  }
+
 
  //fin
 
