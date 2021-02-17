@@ -127,6 +127,10 @@ export class ApiService {
     return this.http.get<detalleVentaI[]>(direccion);
   }
 
+  putVenta(form: ventaI):Observable<ResponseI>{
+    let direccion = 'http://127.0.0.1:8000/ventas/'+form.id;
+    return this.http.put<ResponseI>(direccion,form);
+  }
 
 
  //fin

@@ -29,6 +29,8 @@ export class RegistrarVentasComponent implements OnInit {
   datosProducto:productoI;
   //traer de regreso los productos agregados
   detalleprodventas:detalleVentaI[];
+  //actulizar los datos de la venta
+
 
   constructor(private activerouter:ActivatedRoute,
               private router:Router,
@@ -100,17 +102,6 @@ export class RegistrarVentasComponent implements OnInit {
   }
   //fin**********
 
-  //***************crear la factura  ***
-//  registrarDetalleVenta(){
-//    this.registrarForm = this.formbuilder.group({
-//      venta:'',
-//      producto:'',
-//      precio:'',
-//      cantidad:'',
-//      subtotal:'',
-//    })
-//  }
-
   pasarDatosProducto(id){
     //obtener el id
     this.unprodid = id;
@@ -148,9 +139,6 @@ export class RegistrarVentasComponent implements OnInit {
     this.verDetalleVenta(this.editarForm.value.id);
  }
 
- refresh(){
-   this.verDetalleVenta(this.editarForm.value.id);
- }
  //traer de regreso los detalle de venta registrados
  verDetalleVenta(idventa){
    console.log("este es id de la ventaaa");
@@ -166,8 +154,44 @@ export class RegistrarVentasComponent implements OnInit {
      'cantidad':'',
      'subtotal':'',
    });
-
+   this.actualizarDatosVentas(this.editarForm.value.id);
  }
+
+  actualizarDatosVentas(idventa){
+      console.log("y se marcho");
+      console.log("este es id de la ventaaa");
+      console.log(idventa);
+      this.api.getDetalleVentaParticular(idventa).subscribe(data => {
+        console.log(data);
+        this.detalleprodventas=data;
+        var suma:number = 0;
+        for(let posicion in this.detalleprodventas){
+          console.log(typeof Number(this.detalleprodventas[posicion].subtotal));
+          suma = (suma+Number(this.detalleprodventas[posicion].subtotal));
+        }
+        this.editarForm.value.subtotal=suma;
+        this.editarForm.value.total=suma;
+        this.editarForm.setValue({
+          'id':idventa,
+          'fecha':this.editarForm.value.fecha,
+          'subtotal':this.editarForm.value.subtotal,
+          'iva':this.editarForm.value.iva,
+          'total':this.editarForm.value.total,
+        });
+        console.log("seraaaaaaa");
+        console.log(this.editarForm.value);
+      });
+    }
+
+    postForm(form:ventaI){
+      console.log("si llegue");
+      console.log(form)
+      this.api.putVenta(form).subscribe(data =>{
+        console.log(data);
+      });
+      this.router.navigate(['listar-ventas']);
+    }
+
 
 
 
