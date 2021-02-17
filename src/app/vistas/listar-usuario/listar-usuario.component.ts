@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import {ApiService} from '../../servicios/api/api.service';
 import {Router} from '@angular/router';
 import {usuarioI} from '../../modelos/Usuario.interface';
@@ -10,7 +9,9 @@ import {usuarioI} from '../../modelos/Usuario.interface';
   styleUrls: ['./listar-usuario.component.css']
 })
 export class ListarUsuarioComponent implements OnInit {
+
   usuarios:usuarioI[];
+  filterUsuarios = '';
   constructor(private api:ApiService, private router:Router) { }
 
   ngOnInit(): void {
@@ -22,10 +23,8 @@ export class ListarUsuarioComponent implements OnInit {
     console.log(id)
     this.router.navigate(['actualizar-usuario',id])
   }
-
   eliminarusuario(id){
     console.log(id)
     this.router.navigate(['eliminar-usuario',id])
   }
-
 }

@@ -29,7 +29,7 @@
     <div class="container">
         <!--buscador-->
         <form class="form-inline ml-auto" >
-          <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+          <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name= "q" [(ngModel)]="filterProveedores">
           <button class="btn btn-outline-success" type="submit"><h5>Buscar Proveedor</h5></button>
         </form>
 
@@ -66,7 +66,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let proveedor of proveedores" >
+                      <tr *ngFor="let proveedor of proveedores | filterProv: filterProveedores" >
                           <td>
                               <span class="custom-checkbox">
                                   <input type="checkbox" id="checkbox1" name="options[]" value="1">
