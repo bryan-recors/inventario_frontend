@@ -62,6 +62,15 @@ export class ApiService {
   deleteProducto(id): Observable<any> {
   return this.http.delete(this.url + id, this.getHeaders());
   }
+
+  addProducto(producto: productoI){
+    let direccion = this.url
+    let pJson = JSON.stringify(producto);
+    return this.http.post(this.url, pJson,this.getHeaders())
+          //.map(r => r.json())
+          //.catch(this.handleError);
+  }
+
   //*******************proveedores***************************
   //proveedores
   private urlpv:string='/proveedores/';
@@ -132,6 +141,15 @@ export class ApiService {
     return this.http.put<ResponseI>(direccion,form);
   }
 
+  deleteProdDetalleVenta(id): Observable<any> {
+    let direccion = 'http://127.0.0.1:8000/detalle_ventas/'+id;
+    return this.http.delete(direccion, this.getHeaders());
+  }
+
+  deleteVenta(id): Observable<any> {
+    let direccion = 'http://127.0.0.1:8000/ventas/'+id+'/';
+    return this.http.delete(direccion, this.getHeaders());
+  }
 
  //fin
 
@@ -154,7 +172,6 @@ export class ApiService {
   deleteUsuario(id): Observable<any> {
   return this.http.delete(this.url_login + id, this.getHeaders());
   }
-
 
   addUsuario(usu: registrarUsI){
     let pJson = JSON.stringify(usu);

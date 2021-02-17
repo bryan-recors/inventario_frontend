@@ -26,7 +26,8 @@
                                 <label for="Seleccionar todo"></label>
                             </span>
                         </th>
-                        <th>ID</th>
+                        <th> ID </th>
+                        <th> Fecha </th>
                         <th> Total Pagar</th>
                         <th> Opciones</th>
                     </tr>
@@ -41,15 +42,16 @@
                             </span>
                         </td>
                         <td>{{ventas.id}}</td>
+                        <td>{{ventas.fecha |date:'medium' }}</td>
                         <td>{{ventas.total}}</td>
                         <td>
                             <a class="edit" data-toggle="modal" routerLink="/actualizar-venta/"><i class="material-icons" data-toggle="tooltip" title="Actualizar" >&#xE254;</i></a>
-                            <a class="delete" data-toggle="modal" routerLink="/eliminar-venta/"><i class="material-icons" data-toggle="tooltip" title="Eliminar" >&#xE872;</i></a>
+                            <a class="delete" data-toggle="modal" href="#"><i class="material-icons" data-toggle="tooltip" title="Eliminar" (click)=eliminarVenta(ventas.id) >&#xE872;</i></a>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <p> TOtal de ventas: {{(api.reposObserver | async)?.length}}</p>
+            <p> Total de ventas: {{(api.reposObserver | async)?.length}}</p>
         </div>
     </div>
 </div>

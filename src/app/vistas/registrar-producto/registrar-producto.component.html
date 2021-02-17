@@ -1,64 +1,33 @@
 <div>
-  <form>
+  <form novalidate [formGroup]= "registrarForm">
     <h1 class="text-center">REGISTRAR PRODUCTO</h1>
+
     <div class="form-row">
-      <label for="inputProducto">Nombre de producto</label>
-      <input type="text" class="form-control" id="inputProducto" placeholder="Producto">
+      <label for="inputNombre">Nombre de producto</label>
+      <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" formControlName='nombre'>
     </div>
 
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="inputPrecioProd">Precio Unitario</label>
-        <input type="text" class="form-control" id="inputPrecioProd" placeholder="00,00">
+        <label for="inputPrecio">Precio Unitario</label>
+        <input type="text" class="form-control" id="inputPrecio" placeholder="00,00" formControlName='precio'>
       </div>
       <div class="form-group col-md-6">
         <label for="inputStock">Stock</label>
-        <input type="text" class="form-control" id="inputStock" placeholder="Stock">
+        <input type="text" class="form-control" id="inputStock" placeholder="Stock" formControlName='stock'>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="inputDescripcionProd">Descripción</label>
-      <input type="text" class="form-control" id="inputDescripcionProd" placeholder="Descripción del producto">
+      <label for="inputDescripcion">Descripción</label>
+      <input type="text" class="form-control" id="inputDescripcion" placeholder="Descripción del producto" formControlName='descripcion'>
     </div>
     <div class="form-group">
-      <label for="inputProveedorProd">Proveedor</label>
-      <input type="text" class="form-control" id="inputProveedorProd" placeholder="Proveedor del proveedor">
+      <label for="inputProveedor">Proveedor</label>
+      <input type="text" class="form-control" id="inputProveedor" placeholder="Proveedor del proveedor" formControlName='proveedor'>
     </div>
-    <!--
-    <div class="form-group">
-      <label for="inputAddress2">Address 2</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputCity">City</label>
-        <input type="text" class="form-control" id="inputCity">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="inputState">State</label>
-        <select id="inputState" class="form-control">
-          <option selected>Choose...</option>
-          <option>...</option>
-        </select>
-      </div>
-      <div class="form-group col-md-2">
-        <label for="inputZip">Zip</label>
-        <input type="text" class="form-control" id="inputZip">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
-        <label class="form-check-label" for="gridCheck">
-          Check me out
-        </label>
-      </div>
-    </div>
--->
-
     <div class="modal-footer">
-      <button routerLink="/listar-productos" type="button" class="btn btn-primary">Registar Producto</button>
+      <button routerLink="/listar-productos" type="button" class="btn btn-primary" (click)=guardarProducto()>Registar Producto</button>
     </div>
   </form>
 </div>

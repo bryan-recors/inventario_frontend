@@ -71,12 +71,12 @@
                     </td>
                     <td>
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputProducto" placeholder="productos" formControlName='producto'>
+                        <input type="text" class="form-control" id="inputProducto" placeholder="productos" readonly formControlName='producto'>
                       </div>
                     </td>
                     <td>
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputProducto" placeholder="precio" formControlName='precio'>
+                        <input type="text" class="form-control" id="inputProducto" placeholder="precio" readonly formControlName='precio'>
                       </div>
                     </td>
                     <td>
@@ -84,16 +84,17 @@
                         <input type="text" class="form-control" id="inputProducto" placeholder="cantidad" formControlName='cantidad'>
                       </div>
                     </td>
+                    <!--Subtotal-->
                     <td>
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputProducto" placeholder="subtotal" formControlName='subtotal'>
+                        <input type="text" class="form-control" id="inputProducto" placeholder="subtotal" readonly formControlName='subtotal'>
                       </div>
                     </td>
                   </tr>
                   <!-- aqui se van a listar los elementos ya registrados -->
                     <tr *ngFor="let detalleventa of detalleprodventas">
                       <td>
-                          <button  class="btn btn-outline-danger" ><i class="fas fa-trash"></i></button>
+                          <button  class="btn btn-outline-danger" (click)=eliminarProdDetalleVenta(detalleventa.id) ><i class="fas fa-trash"></i></button>
                       </td>
                       <td>{{detalleventa.producto}}</td>
                       <td>{{detalleventa.precio}}</td>
@@ -113,14 +114,16 @@
           </div>
           <div class="card-body">
             <form [formGroup]="editarForm" (ngSubmit)="postForm(editarForm.value)">
-              
+              <!-- id de la venta -->
+              <!--
               <div class="form-group">
                 <label for="inputFecha">id venta:</label>
                 <input type="text" class="form-control" id="inputFecha" formControlName='id'>
               </div>
+              -->
               <div class="form-group">
                 <label for="inputFecha">Fecha de la venta:</label>
-                <input type="text" class="form-control" id="inputFecha" formControlName='fecha'>
+                <input type="text" class="form-control" id="inputFecha" readonly formControlName='fecha'>
               </div>
               <div class="form-group">
                 <label for="inputSubtotal">Subtotal</label>
@@ -137,7 +140,7 @@
               <div class="modal-footer">
               <!--  <button  type="button" class="btn btn-primary"  (click)=crearVenta()>Crear Venta</button>     -->
                 <button type="submit" class="btn btn-primary"><i class="fas fa-save">Guardar</i></button>
-                <button type="submit" class="btn btn-danger"><i class="fas fa-trash">Cancelar</i></button>
+                <button class="btn btn-danger"><i class="fas fa-trash " (click)=eliminarTodaVenta()>Cancelar</i></button>
               </div>
             </form>
           </div>
