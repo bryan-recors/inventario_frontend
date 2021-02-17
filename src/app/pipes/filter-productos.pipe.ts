@@ -10,7 +10,7 @@ export class FilterProductosPipe implements PipeTransform {
       for (const post of value){
         
         if (post.nombre.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
-          console.log('encontradooo');
+          console.log('producto encontrado');
           resultado.push(post);
         };
       };

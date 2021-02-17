@@ -12,6 +12,8 @@ import { proveedorI } from 'src/app/modelos/proveedor.interface';
 export class ListarProveedoresComponent implements OnInit {
 
   proveedores:ListaproveedoresI[];
+  filterProveedores = '';
+
   constructor(private api:ApiService, private router:Router) { }
 
   ngOnInit(): void {
@@ -19,7 +21,6 @@ export class ListarProveedoresComponent implements OnInit {
       this.proveedores=data;
     })
   }
-
   editarproveedor(id){
     console.log(id)
     this.router.navigate(['actualizar-proveedor',id])
