@@ -38,10 +38,11 @@
                         </thead>
                         <tbody>
                           <tr *ngFor="let producto of productos | filterProd: filterProducto" >
+
                             <td>{{producto.nombre}}</td>
                             <td>{{producto.precio}}</td>
                             <td>
-                                <button type="button" class="btn btn-success  btn-flat"><i class="fas fa-plus"></i></button>
+                                <button type="button" class="btn btn-success  btn-flat" (click)=pasarDatosProducto(producto.id)><i class="fas fa-plus"></i></button>
                             </td>
                           </tr>
                         </tbody>
@@ -50,16 +51,58 @@
               </div>
             </div>
               <hr>
-            <table class="table table-bordered " id="data">
-              <thead>
-                <hr>
-                <th>Eliminar</th>
-                <th>Producto</th>
-                <th>Precio de venta</th>
-                <th>Cantidad</th>
-                <th>Subtotal</th>
-              </thead>
-            </table>
+              <hr>
+            <form novalidate [formGroup]= "registrarForm">
+              <table class="table table-bordered " id="data">
+                <thead>
+                  <tr>
+                    <th scope="col">Confirmar / Eliminar</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Precio de venta</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- aqui vamos a hacer un form en la tabla -->
+                  <tr>
+                    <td>
+                        <button  class="btn btn-outline-success" (click)=guardarDetallVenta() ><i class="fas fa-check"></i></button>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="inputProducto" placeholder="productos" formControlName='producto'>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="inputProducto" placeholder="precio" formControlName='precio'>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="inputProducto" placeholder="cantidad" formControlName='cantidad'>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="inputProducto" placeholder="subtotal" formControlName='subtotal'>
+                      </div>
+                    </td>
+                  </tr>
+                  <!-- aqui se van a listar los elementos ya registrados -->
+                    <tr *ngFor="let detalleventa of detalleprodventas">
+                      <td>
+                          <button  class="btn btn-outline-danger" ><i class="fas fa-trash"></i></button>
+                      </td>
+                      <td>{{detalleventa.producto}}</td>
+                      <td>{{detalleventa.precio}}</td>
+                      <td>{{detalleventa.cantidad}}</td>
+                      <td>{{detalleventa.subtotal}}</td>
+                    </tr>
+                </tbody>
+              </table>
+            </form>
           </div>
         </div>
       </div>
@@ -70,6 +113,10 @@
           </div>
           <div class="card-body">
             <form [formGroup]="editarForm">
+              <div class="form-group">
+                <label for="inputFecha">id venta:</label>
+                <input type="text" class="form-control" id="inputFecha" formControlName='id'>
+              </div>
               <div class="form-group">
                 <label for="inputFecha">Fecha de la venta:</label>
                 <input type="text" class="form-control" id="inputFecha" formControlName='fecha'>
