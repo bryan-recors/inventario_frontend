@@ -22,10 +22,15 @@
       <label for="inputDescripcion">Descripción</label>
       <input type="text" class="form-control" id="inputDescripcion" placeholder="Descripción del producto" formControlName='descripcion'>
     </div>
+    <!--***********listar proveedor ************-->
     <div class="form-group">
-      <label for="inputProveedor">Proveedor</label>
-      <input type="text" class="form-control" id="inputProveedor" placeholder="Proveedor del proveedor" formControlName='proveedor'>
-    </div>
+     <label for="inputProveedor">Seleccione un Proveedor</label>
+     <select formControlName='proveedor' class="form-control" id="exampleFormControlSelect1">
+        <option *ngFor="let proveedor of proveedores" value="{{proveedor.id}}" >{{proveedor.nombre}}</option>
+     </select>
+   </div>
+    <!--**************************************-->
+
     <div class="modal-footer">
       <button routerLink="/listar-productos" type="button" class="btn btn-primary" (click)=guardarProducto()>Registar Producto</button>
     </div>

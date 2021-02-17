@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {ApiService} from '../../servicios/api/api.service';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
+import { proveedorI } from 'src/app/modelos/proveedor.interface';
+import {ListaproveedoresI} from '../../modelos/listaProveedores.interface';
 
 @Component({
   selector: 'app-registrar-producto',
@@ -13,6 +15,7 @@ import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 export class RegistrarProductoComponent implements OnInit {
 
   registrarForm: FormGroup;
+  proveedores:ListaproveedoresI[];
 
   constructor(private activerouter:ActivatedRoute,
               private router:Router,
@@ -20,11 +23,7 @@ export class RegistrarProductoComponent implements OnInit {
               private formbuilder: FormBuilder) { this.registrarProducto(); }
 
   ngOnInit(): void {
-    //obtener id
-    let productoid=this.activerouter.snapshot.paramMap.get('id');
-    console.log("id del proveedor");
-    console.log(productoid);
-
+    this.consultarproveedores();
   }
 
   registrarProducto(){
@@ -34,6 +33,14 @@ export class RegistrarProductoComponent implements OnInit {
       stock:'',
       descripcion:'',
       proveedor:'',
+    })
+  }
+
+  //traer a los proveedores
+  consultarproveedores(){
+    this.api.getAllProveedores().subscribe(data => {
+      this.proveedores=data;
+      console.log(this.proveedores);
     })
   }
 
