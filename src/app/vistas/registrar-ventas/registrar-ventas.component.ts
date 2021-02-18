@@ -25,6 +25,8 @@ export class RegistrarVentasComponent implements OnInit {
   productos:ListaproductosI[];
   //mostrar filtro de busqueda
   public viewsearch: boolean = false;
+  //para activar las creacion de una venta
+  public activesale: boolean = false;
   //obtener producto elegido para cagar
   datosProducto:productoI;
   //traer de regreso los productos agregados
@@ -57,13 +59,13 @@ export class RegistrarVentasComponent implements OnInit {
 
   ngOnInit(): void {
     this.verProd();
-    this.crearVenta();
   }
 
   crearVenta(){
     this.api.iniciarVenta().subscribe(response => {
       this.getSingleVenta(response.id);
     });
+    this.onsale();
   }
   //traer la venta que se crea inicialmente
   getSingleVenta(id){
@@ -100,6 +102,15 @@ export class RegistrarVentasComponent implements OnInit {
   offviewsearch(){
     this.viewsearch = false;
   }
+  //activar o desactivar las ventas
+  onsale(){
+    this.activesale = true;
+  }
+
+  offsale(){
+    this.activesale = false;
+  }
+
   //fin**********
 
   pasarDatosProducto(id){
@@ -210,9 +221,10 @@ export class RegistrarVentasComponent implements OnInit {
       this.api.deleteVenta(this.editarForm.value.id).subscribe(data =>{
         console.log(data);
       });
+      this.offsale();
       setTimeout(() => {
         this.router.navigate(['listar-ventas']);
-      }, 2000);
+      }, 1000);
     }
 
 

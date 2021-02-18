@@ -3,8 +3,9 @@
     <h3 class="card-title">
       <i class="fas fa-plus"> Registrar una venta</i>
     </h3>
+    <button  type="button" class="btn btn-primary"  (click)=crearVenta()><i class="fas fa-plus"> Crear venta</i></button>
   </div>
-  <div class="card-body">
+  <div *ngIf="activesale" class="card-body">
     <div class="row">
       <div class="col-lg-8">
         <div class="card card-secondary">
