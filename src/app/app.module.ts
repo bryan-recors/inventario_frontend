@@ -19,7 +19,7 @@ import { PagNoEncontradaComponent } from './vistas/pag-no-encontrada/pag-no-enco
 //busquedas
 import { FilterProductosPipe } from './pipes/filter-productos.pipe';
 import { FilterProveedoresPipe } from './pipes/filter-proveedores.pipe';
-import { FilterUsuariosPipe } from './pipes/filter-usuarios.pipe'
+import { FilterUsuariosPipe } from './pipes/filter-usuarios.pipe';
 
 //copiar componentes a app-routing.module.ts
 //import { ListarProductosComponent } from './vistas/listar-productos/listar-productos.component';
