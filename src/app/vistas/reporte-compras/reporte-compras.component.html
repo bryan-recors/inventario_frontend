@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-20" style="width: 100%;">
+                      <h1 class="text-center">Reportes de Ventas</h1>
+                      <form class="header-reportes" (ngSubmit)=selectFecha()>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="inputFechaReporte">Fecha inicio del Reporte</label>
+                              <input type="date" class="form-control" id="inicioFechaReporte" placeholder="Fecha" >
+                            </div>
+                              <div class="form-group col-md-6">
+                                <label for="inputFechaReporte">Fecha fin del Reporte</label>
+                                <input type="date" class="form-control" id="finFechaReporte" placeholder="Fecha">
+                                <br>
+                                <button type="submit" class="btn btn-primary">Generar Reporte</button>
+                              </div>
+                          </div>
+                      </form>
+                    </div>
+                    <!--
+                    <div class="col-6">
+                        <a class="btn btn-success" [routerLink]="['registrar-producto']" data-toggle="modal"><i class="material-icons" >&#xE147;</i> <span>Añadir nuevo Producto</span></a>
+                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+                     </div>
+                     -->
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <h2>Lista de <b>Ventas</b></h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span class="custom-checkbox">
+                                        <input type="checkbox" id="selectAll">
+                                        <label for="Seleccionar todo"></label>
+                                    </span>
+                                </th>
+                                <th>ID</th>
+                                <th>Proveedor</th>
+                                <th> Fecha</th>
+                                <th> Total Cancelado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let compra of compras ">
+                              <!-- ver la cantidad de repos q descarga reposObserver -->
+                                <td>
+                                    <span class="custom-checkbox">
+                                        <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                                        <label for="checkbox1"></label>
+                                    </span>
+                                </td>
+
+                                <td>{{compra.id}}</td>
+                                <td>{{compra.proveedor}}</td>
+                                <td>{{compra.fecha}}</td>
+                                <td>{{compra.total}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--<p> Total de ventas realizadas: {{(api.reposObserver | async)?.length}}</p>-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
