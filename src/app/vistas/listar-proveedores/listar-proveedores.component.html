@@ -27,10 +27,15 @@
 </head>
 <body>
     <div class="container">
-        <!--buscador-->
+        <!--buscador
         <form class="form-inline ml-auto" >
           <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name= "q" [(ngModel)]="filterProveedores">
-          <!-- <button class="btn btn-outline-success" type="submit"><h5>Buscar Proveedor</h5></button>-->
+          <button class="btn btn-outline-success" type="submit"><h5>Buscar Proveedor</h5></button>
+        </form>
+        -->
+
+        <form class="form-inline ml-auto" >
+          <input class="form-control form-control-lg" type="search" placeholder="Buscar Proveedor" aria-label="Search" name= "q" [(ngModel)]="filterProveedores">
         </form>
 
         <div class="table-responsive">
