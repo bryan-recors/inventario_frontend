@@ -69,7 +69,7 @@ export class ActualizarProductoComponent implements OnInit {
     //console.log(form)
     var indice:number = 0;
     for(let posicion in this.proveedores){
-      if (form.proveedor == this.proveedores[posicion].nombre){
+      if (String(form.proveedor) == this.proveedores[posicion].nombre){
         indice = Number(this.proveedores[posicion].id)
       }
     }
