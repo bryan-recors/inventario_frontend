@@ -1,0 +1,57 @@
+<div class="container">
+    <!--buscador
+    <form class="form-inline ml-auto" >
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit"><h5>Buscar Venta</h5></button>
+    </form>
+     -->
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h2>Lista de <b>Compras</b></h2>
+                    </div>
+                    <div class="col-xs-6">
+                        <a class="btn btn-success" routerLink="/registrar-compras" data-toggle="modal"><i class="material-icons" >&#xE147;</i> <span>Añadir Compra</span></a>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="selectAll">
+                                <label for="Seleccionar todo"></label>
+                            </span>
+                        </th>
+                        <th> ID </th>
+                        <th> Fecha </th>
+                        <th> Total Pagado</th>
+                        <th> Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let compras of api.reposObserver |async">
+                      <!-- ver la cantidad de repos q descarga reposObserver -->
+                        <td>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                                <label for="checkbox1"></label>
+                            </span>
+                        </td>
+                        <td>{{compras.id}}</td>
+                        <td>{{compras.fecha |date:'medium' }}</td>
+                        <td>{{compras.total}}</td>
+                        <td>
+                            <a class="edit" data-toggle="modal" routerLink="/actualizar-compra/"><i class="material-icons" data-toggle="tooltip" title="Actualizar" >&#xE254;</i></a>
+                            <a class="delete" data-toggle="modal" routerLink="/listar-compras/" ><i class="material-icons" data-toggle="tooltip" title="Eliminar" (click)=eliminarCompra(compras.id) >&#xE872;</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p> Total de compras: {{(api.reposObserver | async)?.length}}</p>
+        </div>
+    </div>
+</div>

@@ -18,6 +18,9 @@ import { share } from 'rxjs/operators';
 import {ventaI} from '../../modelos/regventa.interface';
 import {detalleVentaI} from '../../modelos/detalleventa.interface';
 import { UserInterface } from 'src/app/modelos/login.interface';
+//compras
+import {compraI} from '../../modelos/regcompra.interface';
+import {detalleCompraI} from '../../modelos/detallecompra.interface';
 
 //****probar observables sandoval
 //import 'rxjs/add/operator/map'; este es remplazaso por import { map } from 'rxjs/operators';
@@ -97,6 +100,7 @@ export class ApiService {
           //.map(r => r.json())
           //.catch(this.handleError);
   }
+
   //*******************ventas sandoval***************************
   getAllVentas(){
     this.reposObserver = this.http.get('http://127.0.0.1:8000/ventas/')
@@ -153,6 +157,59 @@ export class ApiService {
   }
 
  //fin
+// ***************manejar  compras**********************************************
+getAllCompras(){
+  this.reposObserver = this.http.get('http://127.0.0.1:8000/compras/')
+  .pipe(map((data : Object[]) =>{
+    return data.map((r:any) => new Repo(r.id,r.fecha,r.total))
+  }));
+}
+
+iniciarCompra(): Observable<compraI>{
+  let direccion = 'http://127.0.0.1:8000/compras/'
+  return this.http.post<compraI>(direccion,this.getHeaders());
+}
+
+getSingleCompra(id):Observable<compraI>{
+  let direccion = 'http://127.0.0.1:8000/compras/'+id;
+  return this.http.get<compraI>(direccion);
+}
+
+//crear detalle de la compra
+addCompra(detallecompra: detalleCompraI){
+  let direccion = 'http://127.0.0.1:8000/detalle_compras/'
+  let pJson = JSON.stringify(detallecompra);
+  return this.http.post(direccion, pJson,this.getHeaders())
+        //.map(r => r.json())
+        //.catch(this.handleError);
+}
+
+//traer todos los detalle de venta que tengan id de la compra en curso
+getDetalleCompraParticular(id):Observable<detalleCompraI[]>{
+  let direccion = 'http://127.0.0.1:8000/detalle_compras_porcompra/'+id;
+  return this.http.get<detalleCompraI[]>(direccion);
+}
+
+putCompra(form: compraI):Observable<ResponseI>{
+  let direccion = 'http://127.0.0.1:8000/compras/'+form.id+'/';
+  return this.http.put<ResponseI>(direccion,form);
+}
+
+deleteProdDetalleCompra(id): Observable<any> {
+  let direccion = 'http://127.0.0.1:8000/detalle_compras/'+id;
+  return this.http.delete(direccion, this.getHeaders());
+}
+
+deleteCompra(id): Observable<any> {
+  let direccion = 'http://127.0.0.1:8000/compras/'+id+'/';
+  return this.http.delete(direccion, this.getHeaders());
+}
+
+//******************************************************************
+
+
+
+
 
   //*******************usuarios***************************
   /*iniciar sesion*/
