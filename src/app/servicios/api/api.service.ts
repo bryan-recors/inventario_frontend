@@ -17,6 +17,7 @@ import { map } from 'rxjs/operators';
 import { share } from 'rxjs/operators';
 import {ventaI} from '../../modelos/regventa.interface';
 import {detalleVentaI} from '../../modelos/detalleventa.interface';
+import { UserInterface } from 'src/app/modelos/login.interface';
 
 //****probar observables sandoval
 //import 'rxjs/add/operator/map'; este es remplazaso por import { map } from 'rxjs/operators';
@@ -178,6 +179,11 @@ export class ApiService {
     return this.http.post(this.url_login, pJson,this.getHeaders())
           //.map(r => r.json())
           //.catch(this.handleError);
+  }
+
+  loginuser(logi:UserInterface):Observable<ResponseI>{
+    let direccion = 'http://127.0.0.1:8000/usuario/login/';
+    return this.http.post<ResponseI>(direccion,logi,this.getHeaders());
   }
 
   /*funcion para manejar los errores
