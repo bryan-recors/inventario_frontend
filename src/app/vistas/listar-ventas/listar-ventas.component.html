@@ -1,10 +1,10 @@
 <div class="container">
-    <!--buscador-->
+    <!--buscador
     <form class="form-inline ml-auto" >
       <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
       <button class="btn btn-outline-success" type="submit"><h5>Buscar Venta</h5></button>
     </form>
-
+     -->
     <div class="table-responsive">
         <div class="table-wrapper">
             <div class="table-title">
@@ -46,7 +46,7 @@
                         <td>{{ventas.total}}</td>
                         <td>
                             <a class="edit" data-toggle="modal" routerLink="/actualizar-venta/"><i class="material-icons" data-toggle="tooltip" title="Actualizar" >&#xE254;</i></a>
-                            <a class="delete" data-toggle="modal" href="#"><i class="material-icons" data-toggle="tooltip" title="Eliminar" (click)=eliminarVenta(ventas.id) >&#xE872;</i></a>
+                            <a class="delete" data-toggle="modal" routerLink="/listar-ventas/" ><i class="material-icons" data-toggle="tooltip" title="Eliminar" (click)=eliminarVenta(ventas.id) >&#xE872;</i></a>
                         </td>
                     </tr>
                 </tbody>

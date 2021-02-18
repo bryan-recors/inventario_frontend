@@ -23,6 +23,10 @@ export class ListarVentasComponent implements OnInit {
     this.api.deleteVenta(id).subscribe(data =>{
       console.log(data);
     });
+
+    setTimeout(() => {
+      this.api.getAllVentas();
+    }, 1000);
     this.router.navigate(['listar-ventas']);
 
   }
