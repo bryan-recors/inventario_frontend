@@ -1,0 +1,147 @@
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title">
+      <i class="fas fa-plus"> Registrar una Compra</i>
+    </h3>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="card card-secondary">
+          <div class="card-header">
+            <h3 class="card-title"><i class="fas fa-boxes"></i> Detalle de la compra</h3>
+          </div>
+          <div class="card-body">
+            <div class="card-header">
+              <div class="form-group">
+                <label>Buscador de productos</label>
+                <div class="input-group">
+                  <form class="form-inline mr-auto" >
+                    <input class="form-control mr-sm-2" type="search" placeholder="Nombre del producto" aria-label="Search" name= "q" [(ngModel)]="filterProducto" (click)=offviewsearch()>
+                    <span class="input-group-append">
+                    <button  class="btn btn-outline-success" type="submit" (click)=onviewsearch() ><i class="fas fa-search"></i></button>
+                    </span>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="viewsearch" class="card-body">
+              <div class="table-responsive">
+                  <div class="table-wrapper">
+                      <table class="table table-striped table-hover">
+                        <thead>
+                          <tr>
+                            <th>Nombre</th>
+                            <th>Precio Unitario</th>
+                            <th>Opciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let producto of productos | filterProd: filterProducto" >
+
+                            <td>{{producto.nombre}}</td>
+                            <td>{{producto.precio}}</td>
+                            <td>
+                                <button type="button" class="btn btn-success  btn-flat" (click)=pasarDatosProducto(producto.id)><i class="fas fa-plus"></i></button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+              </div>
+            </div>
+              <hr>
+              <hr>
+            <form novalidate [formGroup]= "registrarForm">
+              <table class="table table-bordered " id="data">
+                <thead>
+                  <tr>
+                    <th scope="col">Confirmar / Eliminar</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Precio de compra</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- aqui vamos a hacer un form en la tabla -->
+                  <tr>
+                    <td>
+                        <button  class="btn btn-outline-success" (click)=guardarDetalleCompra() ><i class="fas fa-check"></i></button>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="inputProducto" placeholder="productos" readonly formControlName='producto'>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="inputProducto" placeholder="precio" formControlName='precio_compra'>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="inputProducto" placeholder="cantidad" formControlName='cantidad'>
+                      </div>
+                    </td>
+                    <!--Subtotal-->
+                    <td>
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="inputProducto" placeholder="subtotal" readonly formControlName='subtotal'>
+                      </div>
+                    </td>
+                  </tr>
+                  <!-- aqui se van a listar los elementos ya registrados -->
+                    <tr *ngFor="let detallecompra of detalleprodcompras">
+                      <td>
+                          <button  class="btn btn-outline-danger" (click)=eliminarProdDetalleCompra(detallecompra.id) ><i class="fas fa-trash"></i></button>
+                      </td>
+                      <td>{{detallecompra.producto}}</td>
+                      <td>{{detallecompra.precio_compra}}</td>
+                      <td>{{detallecompra.cantidad}}</td>
+                      <td>{{detallecompra.subtotal}}</td>
+                    </tr>
+                </tbody>
+              </table>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card card-secondary">
+          <div class="card-header">
+            <h3 class="card-title"><i class="fas fa-shopping-cart"></i> Datos de  la compra</h3>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="editarForm" (ngSubmit)="postForm(editarForm.value)">
+              <!-- id de la compra -->
+
+              <div class="form-group">
+                <label for="inputFecha">id compra:</label>
+                <input type="text" class="form-control" id="inputFecha" formControlName='id'>
+              </div>
+
+              <div class="form-group">
+                <label for="inputFecha">Fecha de la compra:</label>
+                <input type="text" class="form-control" id="inputFecha" readonly formControlName='fecha'>
+              </div>
+              <div class="form-group">
+                <label for="inputSubtotal">proveedor</label>
+                <input type="text" class="form-control" id="inputSubtotal" formControlName='proveedor'>
+              </div>
+              <div class="form-group">
+                <label for="inputTotal">Total</label>
+                <input type="text" class="form-control" id="inputTotal" formControlName='total'>
+              </div>
+              <div class="modal-footer">
+              <!--  <button  type="button" class="btn btn-primary"  (click)=crearVenta()>Crear Venta</button>     -->
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save">Guardar</i></button>
+                <button class="btn btn-danger"><i class="fas fa-trash " (click)=eliminarTodaCompra()>Cancelar</i></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

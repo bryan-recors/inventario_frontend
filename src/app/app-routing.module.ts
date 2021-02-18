@@ -29,6 +29,9 @@ import { ReporteProductosComponent } from './vistas/reporte-productos/reporte-pr
 //sandoval mostrar componente en el Inicio
 import { InicioComponent } from './vistas/inicio/inicio.component';
 import { PagNoEncontradaComponent } from './vistas/pag-no-encontrada/pag-no-encontrada.component';
+
+import { RegistrarCompraComponent } from './vistas/registrar-compra/registrar-compra.component';
+import { ListarComprasComponent } from './vistas/listar-compras/listar-compras.component';
 //fin
 /*crear rutas*/
 const routes: Routes = [
@@ -58,8 +61,12 @@ const routes: Routes = [
   { path: 'actualizar-usuario/:id', component: ActualizarUsuarioComponent },
   { path: 'eliminar-usuario/:id', component: EliminarUsuarioComponent },
 
+  { path: 'registrar-compras', component: RegistrarCompraComponent },
+  { path: 'listar-compras', component: ListarComprasComponent },
+
   { path: 'reportes-ventas', component: ReportesVentasComponent },
   { path: 'reporte-productos', component: ReporteProductosComponent },
+
   //si ingresa cualquier ruta no especificada sandoval *****
   { path: 'pagina-no-encontrada', component: PagNoEncontradaComponent, pathMatch:'full' },
   { path: '**', redirectTo: 'pagina-no-encontrada' , pathMatch:'full'},
@@ -94,6 +101,8 @@ export const routingComponents = [
   ActualizarUsuarioComponent,
   EliminarUsuarioComponent,
 
+  RegistrarCompraComponent,
+  ListarComprasComponent,
 
   ReportesVentasComponent,
   ReporteProductosComponent,

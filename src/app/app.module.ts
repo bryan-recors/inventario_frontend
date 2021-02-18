@@ -20,6 +20,8 @@ import { PagNoEncontradaComponent } from './vistas/pag-no-encontrada/pag-no-enco
 import { FilterProductosPipe } from './pipes/filter-productos.pipe';
 import { FilterProveedoresPipe } from './pipes/filter-proveedores.pipe';
 import { FilterUsuariosPipe } from './pipes/filter-usuarios.pipe';
+import { RegistrarCompraComponent } from './vistas/registrar-compra/registrar-compra.component';
+import { ListarComprasComponent } from './vistas/listar-compras/listar-compras.component';
 
 //copiar componentes a app-routing.module.ts
 //import { ListarProductosComponent } from './vistas/listar-productos/listar-productos.component';
@@ -39,6 +41,8 @@ import { FilterUsuariosPipe } from './pipes/filter-usuarios.pipe';
     FilterProductosPipe,
     FilterProveedoresPipe,
     FilterUsuariosPipe,
+    RegistrarCompraComponent,
+    ListarComprasComponent,
 
     //ListarProductosComponent,
     //copiar a la variable en app-routing.module.ts
