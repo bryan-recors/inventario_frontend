@@ -25,6 +25,8 @@ export class RegistrarCompraComponent implements OnInit {
   productos:ListaproductosI[];
   //mostrar filtro de busqueda
   public viewsearch: boolean = false;
+  //para activar las creacion de una compra
+  public activesale: boolean = false;
   //obtener producto elegido para cagar
   datosProducto:productoI;
   //traer de regreso los productos agregados
@@ -56,13 +58,13 @@ export class RegistrarCompraComponent implements OnInit {
 
   ngOnInit(): void {
     this.verProd();
-    this.crearCompra();
   }
 
   crearCompra(){
     this.api.iniciarCompra().subscribe(response => {
       this.getSingleCompra(response.id);
     });
+    this.onsale();
   }
   //traer la venta que se crea inicialmente
   getSingleCompra(id){
@@ -90,13 +92,21 @@ export class RegistrarCompraComponent implements OnInit {
       this.productos=data;
     })
   }
-
+ //activar o desactivar la busqueda de productos
   onviewsearch(){
     this.viewsearch = true;
   }
 
   offviewsearch(){
     this.viewsearch = false;
+  }
+  //activar o desactivar las ventas
+  onsale(){
+    this.activesale = true;
+  }
+
+  offsale(){
+    this.activesale = false;
   }
   //fin**********
 
@@ -206,9 +216,10 @@ export class RegistrarCompraComponent implements OnInit {
       this.api.deleteCompra(this.editarForm.value.id).subscribe(data =>{
         console.log(data);
       });
+      this.offsale();
       setTimeout(() => {
         this.router.navigate(['listar-compras']);
-      }, 2000);
+      }, 1000);
     }
 
 

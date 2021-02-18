@@ -3,13 +3,14 @@
     <h3 class="card-title">
       <i class="fas fa-plus"> Registrar una Compra</i>
     </h3>
+      <button  type="button" class="btn btn-primary"  (click)=crearCompra()><i class="fas fa-plus"> Crear la compra</i></button>
   </div>
-  <div class="card-body">
+  <div  *ngIf="activesale" class="card-body">
     <div class="row">
       <div class="col-lg-8">
         <div class="card card-secondary">
           <div class="card-header">
-            <h3 class="card-title"><i class="fas fa-boxes"></i> Detalle de la compra</h3>
+            <h3 class="card-title"><i class="fas fa-boxes"></i> Detalle de la compra  </h3>
           </div>
           <div class="card-body">
             <div class="card-header">
@@ -134,7 +135,7 @@
                 <input type="text" class="form-control" id="inputTotal" formControlName='total'>
               </div>
               <div class="modal-footer">
-              <!--  <button  type="button" class="btn btn-primary"  (click)=crearVenta()>Crear Venta</button>     -->
+
                 <button type="submit" class="btn btn-primary"><i class="fas fa-save">Guardar</i></button>
                 <button class="btn btn-danger"><i class="fas fa-trash " (click)=eliminarTodaCompra()>Cancelar</i></button>
               </div>

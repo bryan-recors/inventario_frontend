@@ -25,12 +25,16 @@ export class RegistrarVentasComponent implements OnInit {
   productos:ListaproductosI[];
   //mostrar filtro de busqueda
   public viewsearch: boolean = false;
+  //para activar las creacion de una venta
+  public activesale: boolean = false;
   //obtener producto elegido para cagar
   datosProducto:productoI;
   //traer de regreso los productos agregados
   detalleprodventas:detalleVentaI[];
-  //actulizar los datos de la venta
 
+  //****cantidad de productos *****
+  public cantdad_actualp: number = 0;
+  public activealert: boolean = false;
 
   constructor(private activerouter:ActivatedRoute,
               private router:Router,
@@ -57,13 +61,13 @@ export class RegistrarVentasComponent implements OnInit {
 
   ngOnInit(): void {
     this.verProd();
-    this.crearVenta();
   }
 
   crearVenta(){
     this.api.iniciarVenta().subscribe(response => {
       this.getSingleVenta(response.id);
     });
+    this.onsale();
   }
   //traer la venta que se crea inicialmente
   getSingleVenta(id){
@@ -100,6 +104,23 @@ export class RegistrarVentasComponent implements OnInit {
   offviewsearch(){
     this.viewsearch = false;
   }
+  //activar o desactivar las ventas
+  onsale(){
+    this.activesale = true;
+  }
+
+  offsale(){
+    this.activesale = false;
+  }
+  //activar o desactivar alerta
+  onalert(){
+    this.activealert = true;
+  }
+
+  offalert(){
+    this.activealert = false;
+  }
+
   //fin**********
 
   pasarDatosProducto(id){
@@ -126,16 +147,29 @@ export class RegistrarVentasComponent implements OnInit {
 
  // guardarDetallVenta
  guardarDetallVenta(){
-    this.registrarForm.value.subtotal=(this.registrarForm.value.cantidad*this.registrarForm.value.precio);
-    this.registrarForm.value.producto = this.unprodid;
-    console.log("listo form");
-    console.log(this.registrarForm.value);
-    this.api.addVenta(this.registrarForm.value)
-           .subscribe(
-             rt => console.log(rt),
-             er => console.log(er),
-             () => console.log('detalle venta Registrado')
-           )
+    var stockproducto:number = this.datosProducto.stock;
+    var cantidadsolicitada:number = parseInt(this.registrarForm.value.cantidad);
+    console.log(stockproducto);
+    console.log(cantidadsolicitada);
+    if(cantidadsolicitada > stockproducto ){
+      this.onalert();
+      setTimeout(() => {
+        this.offalert();
+      }, 3000);
+      console.log("la cantidad elegida excede el stock actual del producto");
+    }else{
+      console.log("todo bien men ");
+      this.registrarForm.value.subtotal=(this.registrarForm.value.cantidad*this.registrarForm.value.precio);
+      this.registrarForm.value.producto = this.unprodid;
+      console.log("listo form");
+      console.log(this.registrarForm.value);
+      this.api.addVenta(this.registrarForm.value)
+             .subscribe(
+               rt => console.log(rt),
+               er => console.log(er),
+               () => console.log('detalle venta Registrado')
+             )
+    }
     this.verDetalleVenta(this.editarForm.value.id);
  }
 
@@ -210,10 +244,14 @@ export class RegistrarVentasComponent implements OnInit {
       this.api.deleteVenta(this.editarForm.value.id).subscribe(data =>{
         console.log(data);
       });
+      this.offsale();
       setTimeout(() => {
         this.router.navigate(['listar-ventas']);
-      }, 2000);
+      }, 1000);
     }
+
+    //cambiar la cantidad de stock de los productos de acuerdo a lo que se vende
+
 
 
 

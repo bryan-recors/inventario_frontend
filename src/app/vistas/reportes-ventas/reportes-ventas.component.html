@@ -6,15 +6,17 @@
                     <div class="row">
                         <div class="col-20" style="width: 100%;">
                           <h1 class="text-center">Reportes de Ventas</h1>
-                          <form class="header-reportes">
+                          <form class="header-reportes" (ngSubmit)=selectFecha()>
                               <div class="form-row">
                                 <div class="form-group col-md-6">
                                   <label for="inputFechaReporte">Fecha inicio del Reporte</label>
-                                  <input type="date" class="form-control" id="inputFechaReporte" placeholder="Fecha">
+                                  <input type="date" class="form-control" id="inicioFechaReporte" placeholder="Fecha" >
                                 </div>
                                   <div class="form-group col-md-6">
                                     <label for="inputFechaReporte">Fecha fin del Reporte</label>
-                                    <input type="date" class="form-control" id="inputFechaReporte" placeholder="Fecha">
+                                    <input type="date" class="form-control" id="finFechaReporte" placeholder="Fecha">
+                                    <br>
+                                    <button type="submit" class="btn btn-primary">Generar Reporte</button>
                                   </div>
                               </div>
                           </form>
@@ -53,7 +55,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let ventas of api.reposObserver |async">
+                                <tr *ngFor="let venta of ventas ">
                                   <!-- ver la cantidad de repos q descarga reposObserver -->
                                     <td>
                                         <span class="custom-checkbox">
@@ -62,13 +64,13 @@
                                         </span>
                                     </td>
 
-                                    <td>{{ventas.id}}</td>
-                                    <td>{{ventas.fecha}}</td>
-                                    <td>{{ventas.total}}</td>
+                                    <td>{{venta.id}}</td>
+                                    <td>{{venta.fecha}}</td>
+                                    <td>{{venta.total}}</td>
                                 </tr>
                             </tbody>
                         </table>
-                        <p> Total de ventas realizadas: {{(api.reposObserver | async)?.length}}</p>
+                        <!--<p> Total de ventas realizadas: {{(api.reposObserver | async)?.length}}</p>-->
                     </div>
                 </div>
 
