@@ -52,6 +52,12 @@
               </div>
             </div>
               <hr>
+              <div *ngIf="activealert" class="card alerta ">
+                <div class="alert alert-danger" role="alert">
+                  La cantidad elegida excede el stock del producto
+                  <button  class="btn btn-danger b_alert" type="button" ><i class="fas fa-times-circle"></i></button>
+                </div>
+              </div>
               <hr>
             <form novalidate [formGroup]= "registrarForm">
               <table class="table table-bordered " id="data">

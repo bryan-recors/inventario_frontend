@@ -31,8 +31,10 @@ export class RegistrarVentasComponent implements OnInit {
   datosProducto:productoI;
   //traer de regreso los productos agregados
   detalleprodventas:detalleVentaI[];
-  //actulizar los datos de la venta
 
+  //****cantidad de productos *****
+  public cantdad_actualp: number = 0;
+  public activealert: boolean = false;
 
   constructor(private activerouter:ActivatedRoute,
               private router:Router,
@@ -110,6 +112,14 @@ export class RegistrarVentasComponent implements OnInit {
   offsale(){
     this.activesale = false;
   }
+  //activar o desactivar alerta
+  onalert(){
+    this.activealert = true;
+  }
+
+  offalert(){
+    this.activealert = false;
+  }
 
   //fin**********
 
@@ -137,16 +147,29 @@ export class RegistrarVentasComponent implements OnInit {
 
  // guardarDetallVenta
  guardarDetallVenta(){
-    this.registrarForm.value.subtotal=(this.registrarForm.value.cantidad*this.registrarForm.value.precio);
-    this.registrarForm.value.producto = this.unprodid;
-    console.log("listo form");
-    console.log(this.registrarForm.value);
-    this.api.addVenta(this.registrarForm.value)
-           .subscribe(
-             rt => console.log(rt),
-             er => console.log(er),
-             () => console.log('detalle venta Registrado')
-           )
+    var stockproducto:number = this.datosProducto.stock;
+    var cantidadsolicitada:number = parseInt(this.registrarForm.value.cantidad);
+    console.log(stockproducto);
+    console.log(cantidadsolicitada);
+    if(cantidadsolicitada > stockproducto ){
+      this.onalert();
+      setTimeout(() => {
+        this.offalert();
+      }, 3000);
+      console.log("la cantidad elegida excede el stock actual del producto");
+    }else{
+      console.log("todo bien men ");
+      this.registrarForm.value.subtotal=(this.registrarForm.value.cantidad*this.registrarForm.value.precio);
+      this.registrarForm.value.producto = this.unprodid;
+      console.log("listo form");
+      console.log(this.registrarForm.value);
+      this.api.addVenta(this.registrarForm.value)
+             .subscribe(
+               rt => console.log(rt),
+               er => console.log(er),
+               () => console.log('detalle venta Registrado')
+             )
+    }
     this.verDetalleVenta(this.editarForm.value.id);
  }
 
@@ -226,6 +249,9 @@ export class RegistrarVentasComponent implements OnInit {
         this.router.navigate(['listar-ventas']);
       }, 1000);
     }
+
+    //cambiar la cantidad de stock de los productos de acuerdo a lo que se vende
+
 
 
 
