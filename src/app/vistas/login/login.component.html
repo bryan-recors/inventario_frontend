@@ -1,1 +1,18 @@
-<p>hola</p>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="assets/logo.jpeg" id="icon" alt="User Icon" />
+        <h1>Iniciar Sesión</h1>
+      </div>
+  
+      <!-- Login Form -->
+      <form [formGroup]= "user" (ngSubmit)="onLogin(user.value)">
+        <input type="text" id="login" class="fadeIn second" placeholder="Usuario" formControlName="email">
+        <input type="password" id="password" class="fadeIn third" placeholder="Contraseña" formControlName="password">
+        <input type="submit" class="fadeIn fourth" value="Ingresar">
+      </form>
+  
+    </div>
+  </div>

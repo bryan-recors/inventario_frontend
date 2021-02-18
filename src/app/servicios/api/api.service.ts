@@ -17,6 +17,7 @@ import { map } from 'rxjs/operators';
 import { share } from 'rxjs/operators';
 import {ventaI} from '../../modelos/regventa.interface';
 import {detalleVentaI} from '../../modelos/detalleventa.interface';
+import { UserInterface } from 'src/app/modelos/login.interface';
 
 //****probar observables sandoval
 //import 'rxjs/add/operator/map'; este es remplazaso por import { map } from 'rxjs/operators';
@@ -62,6 +63,15 @@ export class ApiService {
   deleteProducto(id): Observable<any> {
   return this.http.delete(this.url + id, this.getHeaders());
   }
+
+  addProducto(producto: productoI){
+    let direccion = this.url
+    let pJson = JSON.stringify(producto);
+    return this.http.post(this.url, pJson,this.getHeaders())
+          //.map(r => r.json())
+          //.catch(this.handleError);
+  }
+
   //*******************proveedores***************************
   //proveedores
   private urlpv:string='/proveedores/';
@@ -128,10 +138,19 @@ export class ApiService {
   }
 
   putVenta(form: ventaI):Observable<ResponseI>{
-    let direccion = 'http://127.0.0.1:8000/ventas/'+form.id;
+    let direccion = 'http://127.0.0.1:8000/ventas/'+form.id+'/';
     return this.http.put<ResponseI>(direccion,form);
   }
 
+  deleteProdDetalleVenta(id): Observable<any> {
+    let direccion = 'http://127.0.0.1:8000/detalle_ventas/'+id;
+    return this.http.delete(direccion, this.getHeaders());
+  }
+
+  deleteVenta(id): Observable<any> {
+    let direccion = 'http://127.0.0.1:8000/ventas/'+id+'/';
+    return this.http.delete(direccion, this.getHeaders());
+  }
 
  //fin
 
@@ -155,12 +174,16 @@ export class ApiService {
   return this.http.delete(this.url_login + id, this.getHeaders());
   }
 
-
   addUsuario(usu: registrarUsI){
     let pJson = JSON.stringify(usu);
     return this.http.post(this.url_login, pJson,this.getHeaders())
           //.map(r => r.json())
           //.catch(this.handleError);
+  }
+
+  loginuser(logi:UserInterface):Observable<ResponseI>{
+    let direccion = 'http://127.0.0.1:8000/usuario/login/';
+    return this.http.post<ResponseI>(direccion,logi,this.getHeaders());
   }
 
   /*funcion para manejar los errores

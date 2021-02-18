@@ -192,6 +192,28 @@ export class RegistrarVentasComponent implements OnInit {
       this.router.navigate(['listar-ventas']);
     }
 
+    //eliminar un producto que ya no quiero que entre en mi venta
+    eliminarProdDetalleVenta(id){
+      //console.log("id de producto a eliminar del detalle de venta");
+      //console.log(id);
+      this.api.deleteProdDetalleVenta(id).subscribe(data =>{
+        console.log(data);
+      });
+      //ESPERAR UN SEGUNDO Y LLAMAR A LA FUNCION PARA ACTULAIZAR LOS DATOS
+      setTimeout(() => {
+        this.verDetalleVenta(this.editarForm.value.id);
+      }, 1000);
+    }
+
+    //ALIMINAR LA VENTA CUANDO PRESIONE CANCELAR
+    eliminarTodaVenta(){
+      this.api.deleteVenta(this.editarForm.value.id).subscribe(data =>{
+        console.log(data);
+      });
+      setTimeout(() => {
+        this.router.navigate(['listar-ventas']);
+      }, 2000);
+    }
 
 
 

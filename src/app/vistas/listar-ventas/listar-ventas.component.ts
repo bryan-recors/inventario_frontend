@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 // importo mi servicios sandoval
 import {ApiService} from '../../servicios/api/api.service';
 //fin
+import {Router, ActivatedRoute} from '@angular/router';
+
 
 @Component({
   selector: 'app-listar-ventas',
@@ -11,10 +13,24 @@ import {ApiService} from '../../servicios/api/api.service';
 
 export class ListarVentasComponent implements OnInit {
 
-  constructor(public api:ApiService) { }
+  constructor(private activerouter:ActivatedRoute, private router:Router, public api:ApiService) { }
 
   ngOnInit(): void {
     this.api.getAllVentas()
   }
+
+  eliminarVenta(id){
+    this.api.deleteVenta(id).subscribe(data =>{
+      console.log(data);
+    });
+
+    setTimeout(() => {
+      this.api.getAllVentas();
+    }, 1000);
+    this.router.navigate(['listar-ventas']);
+
+  }
+
+
 
 }

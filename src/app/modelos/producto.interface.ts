@@ -4,5 +4,6 @@ export interface productoI{
     descripcion: string;
     precio: number;
     stock: number;
-    proveedor:object;
+    proveedor:number;
+    //proveedor:any;
 }
