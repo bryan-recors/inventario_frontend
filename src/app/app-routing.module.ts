@@ -24,6 +24,7 @@ import { ActualizarUsuarioComponent } from './vistas/actualizar-usuario/actualiz
 import { EliminarUsuarioComponent } from './vistas/eliminar-usuario/eliminar-usuario.component'
 
 import { ReportesVentasComponent } from './vistas/reportes-ventas/reportes-ventas.component';
+import { ReporteComprasComponent } from './vistas/reporte-compras/reporte-compras.component';
 import { ReporteProductosComponent } from './vistas/reporte-productos/reporte-productos.component'
 
 //sandoval mostrar componente en el Inicio
@@ -65,6 +66,7 @@ const routes: Routes = [
   { path: 'listar-compras', component: ListarComprasComponent },
 
   { path: 'reportes-ventas', component: ReportesVentasComponent },
+  { path: 'reportes-compras', component: ReporteComprasComponent },
   { path: 'reporte-productos', component: ReporteProductosComponent },
 
   //si ingresa cualquier ruta no especificada sandoval *****
@@ -105,5 +107,6 @@ export const routingComponents = [
   ListarComprasComponent,
 
   ReportesVentasComponent,
+  ReporteComprasComponent,
   ReporteProductosComponent,
 ]

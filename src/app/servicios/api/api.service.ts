@@ -111,6 +111,9 @@ export class ApiService {
   getAllventa():Observable<ventaI[]>{
     return this.http.get<ventaI[]>('http://127.0.0.1:8000/ventas/');
   }
+  getAllcompra():Observable<compraI[]>{
+    return this.http.get<compraI[]>('http://127.0.0.1:8000/compras/');
+  }
  //Crear venta ******
  private urlsearchp:string='/productos/search?q=manza';
   searchProducto(query:string):Observable<ListaproductosI> {
