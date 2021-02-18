@@ -108,6 +108,9 @@ export class ApiService {
       return data.map((r:any) => new Repo(r.id,r.fecha,r.total))
     }));
   }
+  getAllventa():Observable<ventaI[]>{
+    return this.http.get<ventaI[]>('http://127.0.0.1:8000/ventas/');
+  }
  //Crear venta ******
  private urlsearchp:string='/productos/search?q=manza';
   searchProducto(query:string):Observable<ListaproductosI> {
