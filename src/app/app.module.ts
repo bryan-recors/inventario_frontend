@@ -22,6 +22,7 @@ import { FilterProveedoresPipe } from './pipes/filter-proveedores.pipe';
 import { FilterUsuariosPipe } from './pipes/filter-usuarios.pipe';
 import { RegistrarCompraComponent } from './vistas/registrar-compra/registrar-compra.component';
 import { ListarComprasComponent } from './vistas/listar-compras/listar-compras.component';
+import { FilterReportesProductosPipe } from './pipes/filter-reportes-productos.pipe';
 
 //copiar componentes a app-routing.module.ts
 //import { ListarProductosComponent } from './vistas/listar-productos/listar-productos.component';
@@ -43,6 +44,7 @@ import { ListarComprasComponent } from './vistas/listar-compras/listar-compras.c
     FilterUsuariosPipe,
     RegistrarCompraComponent,
     ListarComprasComponent,
+    FilterReportesProductosPipe,
 
     //ListarProductosComponent,
     //copiar a la variable en app-routing.module.ts
