@@ -2,7 +2,7 @@
         <div class="container">
 
             <form class="form-inline ml-auto" >
-              <input class="form-control form-control-lg" type="search" placeholder="Buscar Producto" aria-label="Search" name= "q" [(ngModel)]="filterProductos" >
+              <input class="form-control form-control-lg" type="search" placeholder="Buscar Proveedor" aria-label="Search" name= "q" [(ngModel)]="filterProv" >
             </form>
 
 
@@ -27,7 +27,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let producto of productos | filterProd: filterProductos " >
+                            <tr *ngFor="let producto of productos | filterReportesProductos: filterProv " >
                                 <td>{{producto.id}}</td>
                                 <td>{{producto.nombre}}</td>
                                 <td>{{producto.precio}}</td>
