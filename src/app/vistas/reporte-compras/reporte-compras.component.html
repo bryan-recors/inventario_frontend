@@ -4,7 +4,7 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-20" style="width: 100%;">
-                      <h1 class="text-center">Reportes de Ventas</h1>
+                      <h1 class="text-center">Reportes de Compras</h1>
                       <form class="header-reportes" (ngSubmit)=selectFecha()>
                           <div class="form-row">
                             <div class="form-group col-md-6">
@@ -34,7 +34,7 @@
                     <div class="table-title">
                         <div class="row">
                             <div class="col-xs-6">
-                                <h2>Lista de <b>Ventas</b></h2>
+                                <h2>Lista de <b>Compras</b></h2>
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                                     </span>
                                 </th>
                                 <th>ID</th>
-                                <th>Proveedor</th>
+                                <!--<th>Proveedor</th>-->
                                 <th> Fecha</th>
                                 <th> Total Cancelado</th>
                             </tr>
@@ -65,7 +65,7 @@
                                 </td>
 
                                 <td>{{compra.id}}</td>
-                                <td>{{compra.proveedor}}</td>
+                                <!-- <td>{{compra.proveedor}}</td>-->
                                 <td>{{compra.fecha}}</td>
                                 <td>{{compra.total}}</td>
                             </tr>
@@ -78,4 +78,3 @@
         </div>
     </div>
 </div>
-
