@@ -8,6 +8,8 @@ import {compraI} from '../../modelos/regcompra.interface';
 import {productoI} from '../../modelos/producto.interface';
 import {detalleCompraI} from '../../modelos/detallecompra.interface';
 //fin
+import {ListaproveedoresI} from '../../modelos/listaProveedores.interface';
+
 
 @Component({
   selector: 'app-registrar-compra',
@@ -56,8 +58,19 @@ export class RegistrarCompraComponent implements OnInit {
     subtotal:new FormControl(''),
   });
 
+  //buscar por proveedor
+  proveedores:ListaproveedoresI[];
+  filterProvCompra = '';
+  //fin 
+
   ngOnInit(): void {
     this.verProd();
+
+    //buscar por proveedor
+    this.api.getAllProveedores().subscribe(data => {
+      this.proveedores=data;
+    })
+    //fin
   }
 
   crearCompra(){
@@ -90,7 +103,7 @@ export class RegistrarCompraComponent implements OnInit {
   verProd(){
     this.api.getAllproductos().subscribe(data => {
       this.productos=data;
-    })
+    }) 
   }
  //activar o desactivar la busqueda de productos
   onviewsearch(){
