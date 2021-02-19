@@ -144,6 +144,10 @@ export class RegistrarCompraComponent implements OnInit {
              er => console.log(er),
              () => console.log('detalle Compra Registrado')
            )
+    //para sumar al stock lo que compro
+    var stockproducto:number = this.datosProducto.stock;
+    var cantidadsolicitada:number = parseInt(this.registrarForm.value.cantidad);
+    this.changestock(stockproducto,cantidadsolicitada);
     this.verDetalleCompra(this.editarForm.value.id);
  }
 
@@ -181,7 +185,7 @@ export class RegistrarCompraComponent implements OnInit {
         this.editarForm.setValue({
           'id':idcompra,
           'fecha':this.editarForm.value.fecha,
-          'proveedor':'',
+          'proveedor':this.datosProducto.proveedor,
           'total':this.editarForm.value.total,
         });
         console.log("seraaaaaaa");
@@ -221,6 +225,23 @@ export class RegistrarCompraComponent implements OnInit {
         this.router.navigate(['listar-compras']);
       }, 1000);
     }
+
+    //cambiar la cantidad de stock de los productos de acuerdo a lo que se vende
+    changestock(stockproducto, cantidadsolicitada){
+        console.log("cantidad en stock");
+        console.log(this.datosProducto.stock);
+        console.log("cantidad solicitada");
+        console.log(cantidadsolicitada);
+        stockproducto = stockproducto + cantidadsolicitada;
+        console.log("cantidad restante");
+        console.log(stockproducto);
+        this.datosProducto.stock = stockproducto;
+        console.log("datos del refactorizado");
+        console.log(this.datosProducto);
+        this.api.putProducto(this.datosProducto).subscribe(data =>{
+          console.log(data);
+        });
+      }
 
 
 
