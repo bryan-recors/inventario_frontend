@@ -38,6 +38,7 @@
                           <tr>
                             <th>Nombre</th>
                             <th>Precio Unitario</th>
+                            <th>Proveedor</th>
                             <th>Opciones</th>
                           </tr>
                         </thead>
@@ -47,6 +48,7 @@
 
                             <td>{{producto.nombre}}</td>
                             <td>{{producto.precio}}</td>
+                            <td>{{producto.proveedor.nombre}}</td>
                             <td>
                                 <button type="button" class="btn btn-success  btn-flat" (click)=pasarDatosProducto(producto.id)><i class="fas fa-plus"></i></button>
                             </td>

@@ -146,7 +146,7 @@ export class RegistrarVentasComponent implements OnInit {
   }
 
  // guardarDetallVenta
- guardarDetallVenta(){
+  guardarDetallVenta(){
     var stockproducto:number = this.datosProducto.stock;
     var cantidadsolicitada:number = parseInt(this.registrarForm.value.cantidad);
     console.log(stockproducto);
@@ -169,12 +169,14 @@ export class RegistrarVentasComponent implements OnInit {
                er => console.log(er),
                () => console.log('detalle venta Registrado')
              )
+      //cambiar la cantidad de stock de los productos de acuerdo a lo que se vende
+    this.changestock(stockproducto,cantidadsolicitada);
     }
     this.verDetalleVenta(this.editarForm.value.id);
- }
+  }
 
  //traer de regreso los detalle de venta registrados
- verDetalleVenta(idventa){
+  verDetalleVenta(idventa){
    console.log("este es id de la ventaaa");
    console.log(idventa);
    this.api.getDetalleVentaParticular(idventa).subscribe(data => {
@@ -217,7 +219,7 @@ export class RegistrarVentasComponent implements OnInit {
       });
     }
 
-    postForm(form:ventaI){
+  postForm(form:ventaI){
       console.log("si llegue");
       console.log(form)
       this.api.putVenta(form).subscribe(data =>{
@@ -226,8 +228,8 @@ export class RegistrarVentasComponent implements OnInit {
       this.router.navigate(['listar-ventas']);
     }
 
-    //eliminar un producto que ya no quiero que entre en mi venta
-    eliminarProdDetalleVenta(id){
+  //eliminar un producto que ya no quiero que entre en mi venta
+  eliminarProdDetalleVenta(id){
       //console.log("id de producto a eliminar del detalle de venta");
       //console.log(id);
       this.api.deleteProdDetalleVenta(id).subscribe(data =>{
@@ -239,8 +241,8 @@ export class RegistrarVentasComponent implements OnInit {
       }, 1000);
     }
 
-    //ALIMINAR LA VENTA CUANDO PRESIONE CANCELAR
-    eliminarTodaVenta(){
+  //ALIMINAR LA VENTA CUANDO PRESIONE CANCELAR
+  eliminarTodaVenta(){
       this.api.deleteVenta(this.editarForm.value.id).subscribe(data =>{
         console.log(data);
       });
@@ -250,8 +252,22 @@ export class RegistrarVentasComponent implements OnInit {
       }, 1000);
     }
 
-    //cambiar la cantidad de stock de los productos de acuerdo a lo que se vende
-
+  //cambiar la cantidad de stock de los productos de acuerdo a lo que se vende
+  changestock(stockproducto, cantidadsolicitada){
+      console.log("cantidad en stock");
+      console.log(this.datosProducto.stock);
+      console.log("cantidad solicitada");
+      console.log(cantidadsolicitada);
+      stockproducto = stockproducto - cantidadsolicitada;
+      console.log("cantidad restante");
+      console.log(stockproducto);
+      this.datosProducto.stock = stockproducto;
+      console.log("datos del refactorizado");
+      console.log(this.datosProducto);
+      this.api.putProducto(this.datosProducto).subscribe(data =>{
+        console.log(data);
+      });
+    }
 
 
 
